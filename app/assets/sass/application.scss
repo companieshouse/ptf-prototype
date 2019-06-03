@@ -13,3 +13,10 @@ $govuk-global-styles: true;
 @import "components/cookie-banner";
 
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
+.govuk-input--company-number {
+  max-width: 13ex;
+}
+
+.govuk-input--defStat-reference {
+  max-width: 22ex;
+}
