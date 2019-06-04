@@ -10,6 +10,7 @@ module.exports = {
     accountsDue: '01 January 2020',
     accountsStatus: 'notDue',
     csDue: '15 May 2019',
-    csStatus: 'overdue'
+    csStatus: 'overdue',
+    reason: 'confirmation statement'
   }
 }

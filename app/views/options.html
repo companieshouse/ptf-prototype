@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  {% if errorList.length > 0 %}
+    Error:
+  {% endif %}
+  Promise to file
+{% endblock %}
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+  tag: {
+    text: "alpha"
+  },
+  html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+}) }}
+  {{ govukBackLink({
+  text: "Back",
+  href: "/ptf"
+}) }}
+{% endblock %}
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {% if errorList.length > 0 %}
+        {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errorList
+      }) }}
+      {% endif %}
+      <h1 class="govuk-heading-xl">{{scenario.company.name}}
+        does not intend to file its
+        {{scenario.company.reason}}</h1>
+      <p>Your filing due date for
+        {{scenario.company.reason}}
+        was
+        {{scenario.company.csDue}}
+        and is now overdue.
+        {{scenario.company.reason | capitalize}}
+        filed late are subject to a penalty. The penalty increases over time. You should file as soon as possible.</p>
+      <h2 class="govuk-heading-m">What to do next</h2>
+      <p>If you intend to file
+        <a href="ptf">you need to tell us</a>.</p>
+      <p>Information about the consequences of not filing can be
+        <a href="https://www.gov.uk/government/publications/late-filing-penalties/late-filing-penalties#late-filing-penalty-fees">found in our guidance</a>.</p>
+      <p>Dormant companies must file accounts. If the company is no longer required you can
+        <a href="https://www.gov.uk/strike-off-your-company-from-companies-register">close the company</a>.</p>
+      <p>You should file your accounts</a>
+      as soon as possible.
+      <a href="https://www.gov.uk/government/publications/life-of-a-company-annual-requirements/life-of-a-company-part-1-accounts">Read the guidance on how to file your accounts.</a>
+    </p>
+  </div>
+</div>
+{% endblock %}
