@@ -24,18 +24,21 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      {% if errorList.length > 0 %}
+      {% if referenceErr or companyErr %}
         {{ govukErrorSummary({
-              titleText: "We couldn't find your Default Statutory notification",
-              errorList: errorList
-            }) }}
+      titleText: "We couldn't find your reference details",
+      errorList: errorList,
+      text: companyErr.text,
+      text: referenceErr.text
+    }) }}
       {% endif %}
+
       <h1 class="govuk-heading-xl">
         What are your default statutory details?
       </h1>
 
       <form method="post" action="">
-        {% if companyNumberErr.flag %}
+        {% if companyErr.flag %}
           {{ govukInput({
                 label: {
                   text: "Company number"
@@ -44,7 +47,7 @@
                   text: "This is the 8 character reference issued by Companies House when the company was set up."
                 },
                 errorMessage: {
-                  text: companyNumberErr.text
+                  text: companyErr.text
                 },
                 classes: "govuk-input--company-number",
                 id: "company-number",
@@ -66,7 +69,7 @@
               }) }}
         {% endif %}
 
-        {% if defStatReferenceErr.flag %}
+        {% if referenceErr.flag %}
           {{ govukInput({
                 label: {
                   text: "DEFSTAT reference"
@@ -75,12 +78,12 @@
                   text: "This is the 17 character reference shown on your Default Statutory notification."
                 },
                 errorMessage: {
-                  text: defStatReferenceErr.text
+                  text: referenceErr.text
                 },
-                classes: "govuk-input--defstat-reference",
-                id: "defstat-reference",
-                name: "defStatReference",
-                value: defStatReference
+                classes: "govuk-input--reference",
+                id: "reference",
+                name: "reference",
+                value: reference
               }) }}
         {% else %}
           {{ govukInput({
@@ -91,9 +94,9 @@
                   text: "This is the 17 character reference shown on your Default Statutory notification."
                 },
                 classes: "govuk-input--defStat-reference",
-                id: "defStat-reference",
-                name: "defStatReference",
-                value: defStatReference
+                id: "reference",
+                name: "reference",
+                value: reference
               }) }}
         {% endif %}
         <div class="govuk-form-group">

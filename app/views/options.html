@@ -30,23 +30,32 @@
       <h1 class="govuk-heading-xl">{{scenario.company.name}}
         does not intend to file its
         {{scenario.company.reason}}</h1>
-      <p>Your filing due date for
+      <p>Your filing due date for the
         {{scenario.company.reason}}
         was
-        {{scenario.company.csDue}}
-        and is now overdue.
-        {{scenario.company.reason | capitalize}}
-        filed late are subject to a penalty. The penalty increases over time. You should file as soon as possible.</p>
+
+        {% if scenario.company.reason === 'confirmation statement' %}
+          {{scenario.company.csDue}}
+          and is now overdue.
+        {% else %}
+          {{ scenario.company.accountsDue }}
+          and is now overdue.
+          {{scenario.company.reason | capitalize}}
+          filed late are subject to a penalty. The penalty increases over time. You should file as soon as possible.</p>
+      {% endif %}
+
       <h2 class="govuk-heading-m">What to do next</h2>
-      <p>If you intend to file
-        <a href="ptf">you need to tell us</a>.</p>
+      <p>
+        <a href="ptf">You need to tell us</a>
+        if you intend to file.</p>
+      <p>If the company is no longer required you can
+        <a href="https://www.gov.uk/strike-off-your-company-from-companies-register">close the company</a>.</p>
+      <p>You should file your
+        {{ scenario.company.reason }}</a>
+      as soon as possible.
+      <a href="https://www.gov.uk/government/publications/life-of-a-company-annual-requirements/life-of-a-company-part-1-accounts">Read the guidance on how to file documents for a company.</a>
       <p>Information about the consequences of not filing can be
         <a href="https://www.gov.uk/government/publications/late-filing-penalties/late-filing-penalties#late-filing-penalty-fees">found in our guidance</a>.</p>
-      <p>Dormant companies must file accounts. If the company is no longer required you can
-        <a href="https://www.gov.uk/strike-off-your-company-from-companies-register">close the company</a>.</p>
-      <p>You should file your accounts</a>
-      as soon as possible.
-      <a href="https://www.gov.uk/government/publications/life-of-a-company-annual-requirements/life-of-a-company-part-1-accounts">Read the guidance on how to file your accounts.</a>
     </p>
   </div>
 </div>

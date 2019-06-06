@@ -19,9 +19,53 @@ router.get('/company-number', function (req, res) {
 })
 router.post('/company-number', function (req, res) {
   var companyNumber = req.body.companyNumber
-  req.session.scenario = require('../app/assets/scenarios/' + companyNumber)
-  req.session.ptf = []
-  res.redirect('check-company')
+  var reference = req.body.reference
+  var referenceErr = {}
+  var companyErr = {}
+  var errorFlag = false
+  var errorList = []
+  var referenceConv = reference.toUpperCase()
+
+  if (companyNumber.length < 8) {
+    companyErr.type = 'invalid'
+    companyErr.text = 'You must enter your full eight character company number'
+    companyErr.flag = true
+    errorFlag = true
+  }
+  if (companyNumber === '') {
+    companyErr.type = 'invalid'
+    companyErr.text = 'You must enter your full eight character company number'
+    companyErr.flag = true
+    errorFlag = true
+  }
+  if (
+    referenceConv !== '00112233DEFSTATAC' &&
+    referenceConv !== '00998877DEFSTATAA'
+  ) {
+    referenceErr.type = 'invalid'
+    referenceErr.text = 'Enter your reference exactly as shown on your default statutory letter'
+    referenceErr.flag = true
+    errorFlag = true
+  }
+  if (reference === '') {
+    referenceErr.type = 'blank'
+    referenceErr.text = 'You must enter a default statutory reference'
+    referenceErr.flag = true
+    errorFlag = true
+  }
+  if (errorFlag === true) {
+    res.render('company-number', {
+      errorList: errorList,
+      referenceErr: referenceErr,
+      companyErr: companyErr,
+      reference: reference,
+      companyNumber: companyNumber
+    })
+  } else {
+    req.session.ptf = []
+    req.session.scenario = require('../app/assets/scenarios/' + companyNumber)
+    res.redirect('check-company')
+  }
 })
 router.get('/check-company', function (req, res) {
   res.render('check-company', {
