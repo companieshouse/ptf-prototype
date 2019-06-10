@@ -40,7 +40,8 @@ router.post('/company-number', function (req, res) {
   }
   if (
     referenceConv !== '00112233DEFSTATAC' &&
-    referenceConv !== '00998877DEFSTATAA'
+    referenceConv !== '00998877DEFSTATAA' &&
+    referenceConv !== '00246666DEFSTATAA'
   ) {
     referenceErr.type = 'invalid'
     referenceErr.text = 'Enter your reference exactly as shown on your default statutory letter'
@@ -88,6 +89,40 @@ router.get('/check-company', function (req, res) {
         break
     }
   })
+  router.get('/want-company', function (req, res) {
+    res.render('want-company', {
+      scenario: req.session.scenario
+    })
+  })
+  router.post('/want-company', function (req, res) {
+    var wantCompany = req.body.wantCompany
+
+    switch (wantCompany) {
+      case 'yes':
+        res.redirect('/file-now')
+        break
+      case 'no':
+        res.redirect('/ds01')
+        break
+    }
+  })
+  router.get('/file-now', function (req, res) {
+    res.render('file-now', {
+      scenario: req.session.scenario
+    })
+  })
+  router.post('/file-now', function (req, res) {
+    var fileNow = req.body.fileNow
+
+    switch (fileNow) {
+      case 'yes':
+        res.redirect('/filingjourney')
+        break
+      case 'no':
+        res.redirect('/28day-confirmation')
+        break
+    }
+  })
   router.get('/options', function (req, res) {
     res.render('options', {
       scenario: req.session.scenario
@@ -98,6 +133,14 @@ router.get('/confirmation', function (req, res) {
   var email = {}
   email = req.session.ptf.pop()
   res.render('confirmation', {
+    scenario: req.session.scenario,
+    email: req.session.email
+  })
+})
+router.get('/28day-confirmation', function (req, res) {
+  var email = {}
+  email = req.session.ptf.pop()
+  res.render('28day-confirmation', {
     scenario: req.session.scenario,
     email: req.session.email
   })
