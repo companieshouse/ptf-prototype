@@ -53,6 +53,14 @@
       {% endif %}
       {% endset %}
 
+      {% if scenario.company.ptfrequest === 'requested' %}
+        {% from "warning-text/macro.njk" import govukWarningText %}
+        {{ govukWarningText({
+        text: "You've already told us you intend to file.",
+        iconFallbackText: "Warning"
+      }) }}
+      {% endif %}
+
       {{ govukTable({
 
   firstCellIsHeader: true,
@@ -119,7 +127,7 @@
 
       {{ govukButton({
 text: "Continue",
-href: "ptf"
+href: "want-company"
 }) }}
 
     </div>

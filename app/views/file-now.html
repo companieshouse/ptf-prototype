@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  {% if errorList.length > 0 %}
+    Error:
+  {% endif %}
+  Tell us if you want to keep
+  {{scenario.company.name}}
+{% endblock %}
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+  tag: {
+    text: "alpha"
+  },
+  html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+}) }}
+  {{ govukBackLink({
+  text: "Back",
+  href: "evidence"
+}) }}
+{% endblock %}
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {% if errorList.length > 0 %}
+        {{ govukErrorSummary({
+          titleText: "Tell us if you want to file now",
+          errorList: errorList
+        }) }}
+      {% endif %}
+
+      {% set titleHTML %}
+      Do you want to file your
+      {{scenario.company.reason}}
+      now?
+      {% endset %}
+
+      <form action="" method="post">
+
+        {{ govukRadios({
+              classes: "govuk-radios--inline",
+              idPrefix: "file-now",
+              name: "fileNow",
+              errorMessage: fileCompanyError,
+              fieldset: {
+                legend: {
+                  text: titleHTML,
+                  isPageHeading: true, classes: 'govuk-fieldset__legend--xl' } }, items: [ { value: "yes", text: "Yes" }, { value: "no", text: "No" } ] }) }}
+
+        {{ govukButton({
+              text: "Continue"
+            }) }}
+      </form>
+    </div>
+  </div>
+
+{% endblock %}
