@@ -124,11 +124,12 @@
     ]
   ]
 }) }}
-
-      {{ govukButton({
+      {% if scenario.company.ptfrequest !== 'requested' %}
+        {{ govukButton({
 text: "Continue",
 href: "want-company"
 }) }}
+      {% endif %}
 
     </div>
   </div>
