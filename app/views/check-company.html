@@ -53,6 +53,15 @@
       {% endif %}
       {% endset %}
 
+      {% if scenario.company.PTFRequested === 'yes' %}
+        {% from "warning-text/macro.njk" import govukWarningText %}
+
+        {{ govukWarningText({
+  text: "You've already told us you're going to file",
+  iconFallbackText: "Warning"
+}) }}
+      {% endif %}
+
       {{ govukTable({
 
   firstCellIsHeader: true,
