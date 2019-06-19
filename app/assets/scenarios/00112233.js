@@ -11,6 +11,7 @@ module.exports = {
     accountsStatus: 'notDue',
     csDue: '15 May 2019',
     csStatus: 'overdue',
-    reason: 'confirmation statement'
+    reason: 'confirmation statement',
+    PTFRequested: 'no'
   }
 }

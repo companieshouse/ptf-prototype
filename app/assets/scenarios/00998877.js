@@ -11,6 +11,7 @@ module.exports = {
     accountsStatus: 'overdue',
     csDue: '15 January 2020',
     csStatus: 'notDue',
-    reason: 'accounts'
+    reason: 'accounts',
+    PTFRequested: 'no'
   }
 }

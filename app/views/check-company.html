@@ -126,11 +126,17 @@
   ]
 }) }}
 
-      {{ govukButton({
+      {% if scenario.company.PTFRequested !== 'yes' %}
+        {{ govukButton({
 text: "Continue",
 href: "ptf"
 }) }}
-
+      {% else %}
+        {{ govukButton({
+text: "Continue",
+href: "confirmation"
+}) }}
+      {% endif %}
     </div>
   </div>
 {% endblock %}
