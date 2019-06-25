@@ -1,10 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  {% if errorList.length > 0 %}
-    Error:
-  {% endif %}
-  Promise to file
+  How to close a limited company
 {% endblock %}
 {% block beforeContent %}
   {{ govukPhaseBanner({
@@ -27,8 +24,12 @@
         errorList: errorList
       }) }}
       {% endif %}
-      <h1 class="govuk-heading-xl">DS01 journey</h1>
-
+      <h1 class="govuk-heading-xl">How to close a company</h1>
+      <p class="govuk-body-l">A company that is not needed can be removed from the register by the directors.</p>
+      <p class="govuk-body">All companies on the register must file a set of accounts and a confirmation statement each year with Companies House. Even dormant companies must file accounts.</p>
+      <p class="govuk-body">
+        <a href="https://www.gov.uk/closing-a-limited-company" class="govuk-link">Find out more about closing a limited company</a>
+      </p>
     </div>
   </div>
 {% endblock %}
