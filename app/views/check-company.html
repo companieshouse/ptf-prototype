@@ -60,6 +60,7 @@
   text: "You've already told us you're going to file",
   iconFallbackText: "Warning"
 }) }}
+
       {% endif %}
 
       {{ govukTable({
@@ -125,12 +126,13 @@
     ]
   ]
 }) }}
-
+      
       {% if scenario.company.PTFRequested !== 'yes' %}
         {{ govukButton({
 text: "Continue",
-href: "ptf"
+href: "want-company"
 }) }}
+
       {% else %}
         {{ govukButton({
 text: "Continue",
