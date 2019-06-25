@@ -1,6 +1,6 @@
 module.exports = {
   company: {
-    name: 'Bad News LTD',
+    name: 'BAD NEWS LIMITED',
     number: '00998877',
     authCode: '00998877DEFSTATAA',
     status: 'Active',
