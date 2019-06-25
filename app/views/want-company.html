@@ -4,10 +4,8 @@
   {% if errorList.length > 0 %}
     Error:
   {% endif %}
-  Tell us if
+  Tell us if you want to keep
   {{scenario.company.name}}
-  intends to file the
-  {{scenario.company.reason}}
 {% endblock %}
 {% block beforeContent %}
   {{ govukPhaseBanner({
@@ -18,7 +16,7 @@
 }) }}
   {{ govukBackLink({
   text: "Back",
-  href: "evidence"
+  href: "check-company"
 }) }}
 {% endblock %}
 {% block content %}
@@ -26,25 +24,23 @@
     <div class="govuk-grid-column-two-thirds">
       {% if errorList.length > 0 %}
         {{ govukErrorSummary({
-          titleText: "There was a problem with your extension information",
+          titleText: "Tell us if you want to keep the company",
           errorList: errorList
         }) }}
       {% endif %}
 
       {% set titleHTML %}
-      Is
-      {{scenario.company.name}}
-      going to file its
-      {{scenario.company.reason}}?
+      Do you want to keep
+      {{scenario.company.name}}?
       {% endset %}
 
       <form action="" method="post">
 
         {{ govukRadios({
               classes: "govuk-radios--inline",
-              idPrefix: "ptf",
-              name: "ptf",
-              errorMessage: ptfError,
+              idPrefix: "want-company",
+              name: "wantCompany",
+              errorMessage: wantCompanyError,
               fieldset: {
                 legend: {
                   text: titleHTML,
