@@ -89,12 +89,12 @@ router.get('/check-company', function (req, res) {
         break
     }
   })
-  router.get('/want-company', function (req, res) {
-    res.render('want-company', {
+  router.get('/continue-trading', function (req, res) {
+    res.render('continue-trading', {
       scenario: req.session.scenario
     })
   })
-  router.post('/want-company', function (req, res) {
+  router.post('/continue-trading', function (req, res) {
     var wantCompany = req.body.wantCompany
 
     switch (wantCompany) {
@@ -102,7 +102,7 @@ router.get('/check-company', function (req, res) {
         res.redirect('/file-now')
         break
       case 'no':
-        res.redirect('/ds01')
+        res.redirect('/close-a-company')
         break
     }
   })
