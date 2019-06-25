@@ -22,11 +22,21 @@
         </div>
       </div>
 
-      <p class="govuk-body-l">
-        We've sent a confirmation email to
-        <span class="govuk-body-l govuk-!-font-weight-bold">{{ email }}</span>
-        which contains your reference number.
-      </p>
+      {% if scenario.company.PTFRequested !== 'yes' %}
+        <p class="govuk-body-l">
+          We've sent a confirmation email to
+          <span class="govuk-body-l govuk-!-font-weight-bold">{{ email }}</span>
+          which contains your reference number.
+        </p>
+      {% else %}
+        <p class="govuk-body-l">
+          We sent a confirmation email to
+          <span class="govuk-body-l govuk-!-font-weight-bold">{{ email }}</span>
+          on the
+          {{scenario.company.requestedDate }}
+          which contains your reference number.
+        </p>
+      {% endif %}
 
       <p class="govuk-body">
         <a href="print-confirmation" class="govuk-link">Print or save a copy of this confirmation</a>
@@ -37,7 +47,7 @@
         {{scenario.company.reason}}
         before we contact you again.</p>
       <p>It's important that you file the
-        {{ scenario.company.reason }}
+        {{scenario.company.reason}}
         as soon as possible. You should not wait until you hear from us again.</p>
 
       <p class="govuk-body">
