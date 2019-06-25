@@ -99,10 +99,10 @@ router.get('/check-company', function (req, res) {
 
     switch (wantCompany) {
       case 'yes':
-        res.redirect('/file-now')
+        res.redirect('/28day-confirmation')
         break
       case 'no':
-        res.redirect('/close-a-company')
+        res.redirect('/options')
         break
     }
   })
