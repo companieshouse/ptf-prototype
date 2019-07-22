@@ -53,12 +53,14 @@
       {% endif %}
       {% endset %}
 
-      {% if scenario.company.ptfrequest === 'requested' %}
+      {% if scenario.company.PTFRequested === 'yes' %}
         {% from "warning-text/macro.njk" import govukWarningText %}
+
         {{ govukWarningText({
-        text: "You've already told us you intend to file.",
-        iconFallbackText: "Warning"
-      }) }}
+  text: "You've already told us you're going to file",
+  iconFallbackText: "Warning"
+}) }}
+
       {% endif %}
 
       {{ govukTable({
@@ -124,13 +126,19 @@
     ]
   ]
 }) }}
-      {% if scenario.company.ptfrequest !== 'requested' %}
+
+      {% if scenario.company.PTFRequested !== 'yes' %}
         {{ govukButton({
 text: "Continue",
-href: "want-company"
+href: "continue-trading"
+}) }}
+
+      {% else %}
+        {{ govukButton({
+text: "Continue",
+href: "confirmation"
 }) }}
       {% endif %}
-
     </div>
   </div>
 {% endblock %}

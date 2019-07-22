@@ -4,8 +4,9 @@
   {% if errorList.length > 0 %}
     Error:
   {% endif %}
-  Tell us if you want to keep
+  Tell us if
   {{scenario.company.name}}
+  is still required
 {% endblock %}
 {% block beforeContent %}
   {{ govukPhaseBanner({
@@ -24,18 +25,18 @@
     <div class="govuk-grid-column-two-thirds">
       {% if errorList.length > 0 %}
         {{ govukErrorSummary({
-          titleText: "Tell us if you want to keep the company",
+          titleText: "There was a problem with the answer you gave us",
           errorList: errorList
         }) }}
       {% endif %}
 
       {% set titleHTML %}
-      Do you want to keep
-      {{scenario.company.name}}?
+      Is
+      {{scenario.company.name}}
+      still required?
       {% endset %}
 
       <form action="" method="post">
-
         {{ govukRadios({
               classes: "govuk-radios--inline",
               idPrefix: "want-company",
@@ -44,11 +45,24 @@
               fieldset: {
                 legend: {
                   text: titleHTML,
-                  isPageHeading: true, classes: 'govuk-fieldset__legend--xl' } }, items: [ { value: "yes", text: "Yes" }, { value: "no", text: "No" } ] }) }}
-
+                  isPageHeading: true,
+                  classes: 'govuk-fieldset__legend--xl'
+                }
+              },
+              items: [
+              {
+                value: "yes",
+                text: "Yes"
+              },
+              { value: "no",
+              text: "No"
+            }
+            ]
+          })
+        }}
         {{ govukButton({
-              text: "Continue"
-            }) }}
+            text: "Continue"
+          }) }}
       </form>
     </div>
   </div>

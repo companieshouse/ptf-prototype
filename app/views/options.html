@@ -6,19 +6,17 @@
   {% endif %}
   Promise to file
 {% endblock %}
-{% block beforeContent %}
-  {{ govukPhaseBanner({
-  tag: {
-    text: "alpha"
-  },
-  html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
-}) }}
-  {{ govukBackLink({
-  text: "Back",
-  href: "/ptf"
-}) }}
-{% endblock %}
+
 {% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <div class="govuk-panel govuk-panel--confirmation">
+        <h1 class="govuk-panel__title">{{scenario.company.name}}
+          is not required</h1>
+      </div>
+    </div>
+  </div>
+
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       {% if errorList.length > 0 %}
@@ -27,9 +25,7 @@
         errorList: errorList
       }) }}
       {% endif %}
-      <h1 class="govuk-heading-xl">{{scenario.company.name}}
-        does not intend to file its
-        {{scenario.company.reason}}</h1>
+
       <p>Your filing due date for the
         {{scenario.company.reason}}
         was
@@ -41,22 +37,27 @@
           {{ scenario.company.accountsDue }}
           and is now overdue.
           {{scenario.company.reason | capitalize}}
-          filed late are subject to a penalty. The penalty increases over time. You should file as soon as possible.</p>
+          filed late are subject to
+          <a href="https://www.gov.uk/annual-accounts/penalties-for-late-filing">a penalty</a>. The penalty increases over time. You should file as soon as possible.</p>
       {% endif %}
 
       <h2 class="govuk-heading-m">What to do next</h2>
-      <p>You need to tell us if you
-        <a href="ptf">intend to file</a>
-        .</p>
-      <p>If the company is no longer required you can
-        <a href="https://www.gov.uk/strike-off-your-company-from-companies-register">close the company</a>.</p>
-      <p>You should file your
+      <h3 class="govuk-heading-s">Close your company</h3>
+      <p>If the company is no longer required you should
+        <a href="https://www.gov.uk/strike-off-your-company-from-companies-register">close the company</a>. You'll need to pay late filing penalties before closing the company.</p>
+      <h3 class="govuk-heading-s">File your
+        {{scenario.company.reason}}</h3>
+      <p>If you want to keep
+        {{scenario.company.name}}
+        you should to file your
         {{ scenario.company.reason }}</a>
       as soon as possible.
       <a href="https://www.gov.uk/government/publications/life-of-a-company-annual-requirements/life-of-a-company-part-1-accounts">Read the guidance on how to file documents for a company.</a>
-      <p>Failure to file confirmation statements, annual returns or accounts is a criminal offence which can result in directors being fined personally in the criminal courts. Information about the consequences of not filing can be
-        <a href="https://www.gov.uk/government/publications/late-filing-penalties/late-filing-penalties#late-filing-penalty-fees">found in our guidance</a>.</p>
-    </p>
+
+      <p class="govuk-body">
+        <a href="https://www.gov.uk/service-manual/user-centred-design/resources/patterns/feedback-pages.html" class="govuk-link">What did you think of this service?</a>
+        (takes 30 seconds)
+      </p>
+    </div>
   </div>
-</div>
 {% endblock %}
