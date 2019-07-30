@@ -1,3 +1,7 @@
+
+@import "node_modules/govuk-frontend/settings/colours-palette";
+@import "node_modules/govuk-frontend/settings/colours-applied";
+
 $govuk-global-styles: true;
 
 // Override the govuk-frontend font stack
