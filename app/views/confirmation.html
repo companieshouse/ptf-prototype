@@ -13,12 +13,12 @@
     <div class="govuk-grid-column-two-thirds">
 
       <div class="govuk-panel govuk-panel--confirmation">
-        <h1 class="govuk-panel__title">{{ scenario.company.name }}
+        <h1 class="govuk-panel__title">{{scenario.company.name}}
           intends to file its
-          {{ scenario.company.reason }}</h1>
+          {{scenario.company.reason}}</h1>
         <div class="govuk-panel__body">
           Your reference number is the company number<br>
-          <strong>{{ scenario.company.number }}</strong>
+          <strong>{{scenario.company.number}}</strong>
         </div>
       </div>
 
@@ -33,7 +33,7 @@
           We sent a confirmation email to
           <span class="govuk-body-l govuk-!-font-weight-bold">{{ email }}</span>
           on the
-          {{ scenario.company.requestedDate }}
+          {{scenario.company.requestedDate}}
           which contains your reference number.
         </p>
       {% endif %}
@@ -44,10 +44,12 @@
 
       <h2 class="govuk-heading-m">What happens next</h2>
       <p>You have 28 days to file the
-        {{ scenario.company.reason }}
+        {{scenario.company.reason}}
+        for
+        {{scenario.company.name}}
         before we contact you again.</p>
       <p>It's important that you file the
-        {{ scenario.company.reason }}
+        {{scenario.company.reason}}
         as soon as possible. You should not wait until you hear from us again.</p>
 
       <p>Failure to file confirmation statements or accounts is a criminal offence which can result in directors being fined personally in the criminal courts. Information about the consequences of not filing can be

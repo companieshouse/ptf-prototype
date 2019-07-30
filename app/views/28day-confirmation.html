@@ -14,8 +14,7 @@
 
       <div class="govuk-panel govuk-panel--confirmation">
         <h1 class="govuk-panel__title">{{scenario.company.name}}
-          has 28 days to file its
-          {{scenario.company.reason}}</h1>
+          has 28 days to file</h1>
         <div class="govuk-panel__body">
           Your reference number is the company number<br>
           <strong>{{ scenario.company.number }}</strong>
@@ -35,6 +34,8 @@
       <h2 class="govuk-heading-m">What happens next</h2>
       <p>You have 28 days to file the
         {{scenario.company.reason}}
+        for
+        {{scenario.company.name}}
         before we contact you again.</p>
       <p>
         <a href="https://www.gov.uk/government/publications/life-of-a-company-annual-requirements/life-of-a-company-part-1-accounts">Read the guidance on how to file documents for a company.</a>
