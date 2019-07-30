@@ -68,7 +68,17 @@
                 value: companyNumber
               }) }}
         {% endif %}
-
+        {% set companyDetailsHTML %}
+        <p>
+          Use the
+          <a href="https://beta.companieshouse.gov.uk/" target="_blank">Companies House service</a>
+          to find it.
+        </p>
+        {% endset -%}
+        {{ govukDetails({
+              summaryText: "Help with the company number",
+              html: companyDetailsHTML
+            }) }}
         {% if referenceErr.flag %}
           {{ govukInput({
                 label: {
@@ -102,11 +112,11 @@
         <div class="govuk-form-group">
           {% set detailsHTML %}
           <p>
-            Your company number and DEFSTAT reference are shown on the top left of the of the Default Statutory notification.
+            Your DEFSTAT reference is shown on the top left of the of the Default Statutory notification.
           </p>
           {% endset -%}
           {{ govukDetails({
-                summaryText: "Help with company number",
+                summaryText: "Help with the DEFSTAT reference",
                 html: detailsHTML
               }) }}
         </div>
