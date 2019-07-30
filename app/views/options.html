@@ -6,13 +6,25 @@
   {% endif %}
   Promise to file
 {% endblock %}
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+  tag: {
+    text: "alpha"
+  },
+  html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+}) }}
+  {{ govukBackLink({
+  text: "Back",
+  href: "continue-trading"
+}) }}
+{% endblock %}
 
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <div class="govuk-panel govuk-panel--confirmation">
-        <h1 class="govuk-panel__title">{{scenario.company.name}}
-          is not required</h1>
+        <h1 class="govuk-panel__title">{{ scenario.company.name }}
+          is not operational</h1>
       </div>
     </div>
   </div>
@@ -27,28 +39,32 @@
       {% endif %}
 
       <p>Your filing due date for the
-        {{scenario.company.reason}}
+        {{ scenario.company.reason }}
         was
 
         {% if scenario.company.reason === 'confirmation statement' %}
-          {{scenario.company.csDue}}
+          {{ scenario.company.csDue }}
           and is now overdue.
         {% else %}
           {{ scenario.company.accountsDue }}
-          and is now overdue.
-          {{scenario.company.reason | capitalize}}
-          filed late are subject to
-          <a href="https://www.gov.uk/annual-accounts/penalties-for-late-filing">a penalty</a>. The penalty increases over time. You should file as soon as possible.</p>
+          and is now overdue.</p>
       {% endif %}
+      <p>{{ scenario.company.reason | capitalize }}
+        filed late are subject to
+        <a href="https://www.gov.uk/annual-accounts/penalties-for-late-filing">a penalty</a>. The current penalty for
+        {{ scenario.company.name }}
+        is
+        {{ scenario.company.currentPenalty }}
+        and the penalty will increase over time. You should file as soon as possible.</p>
 
       <h2 class="govuk-heading-m">What to do next</h2>
       <h3 class="govuk-heading-s">Close your company</h3>
       <p>If the company is no longer required you should
         <a href="https://www.gov.uk/strike-off-your-company-from-companies-register">close the company</a>. You'll still need to pay late filing penalties.</p>
       <h3 class="govuk-heading-s">File your
-        {{scenario.company.reason}}</h3>
+        {{ scenario.company.reason }}</h3>
       <p>If you want to keep
-        {{scenario.company.name}}
+        {{ scenario.company.name }}
         you should to file your
         {{ scenario.company.reason }}</a>
       as soon as possible.

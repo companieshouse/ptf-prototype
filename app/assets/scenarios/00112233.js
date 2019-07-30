@@ -12,6 +12,7 @@ module.exports = {
     csDue: '15 June 2019',
     csStatus: 'overdue',
     reason: 'confirmation statement',
-    PTFRequested: 'no'
+    PTFRequested: 'no',
+    currentPenalty: '£150'
   }
 }

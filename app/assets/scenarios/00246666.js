@@ -13,6 +13,7 @@ module.exports = {
     csStatus: 'notDue',
     reason: 'accounts',
     PTFRequested: 'yes',
-    requestedDate: '15 June 2019'
+    requestedDate: '15 June 2019',
+    currentPenalty: '£150'
   }
 }
