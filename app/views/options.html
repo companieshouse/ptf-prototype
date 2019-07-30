@@ -47,33 +47,33 @@
           and is now overdue.
         {% else %}
           {{ scenario.company.accountsDue }}
-          and is now overdue.</p>
-      {% endif %}
-      <p>{{ scenario.company.reason | capitalize }}
-        filed late are subject to
-        <a href="https://www.gov.uk/annual-accounts/penalties-for-late-filing">a penalty</a>. The current penalty for
-        {{ scenario.company.name }}
-        is
-        {{ scenario.company.currentPenalty }}
-        and the penalty will increase over time. You should file as soon as possible.</p>
+          and is now overdue.
+        {% endif %}
+        <p>{{ scenario.company.reason | capitalize }}
+          filed late are subject to
+          <a href="https://www.gov.uk/annual-accounts/penalties-for-late-filing">a penalty</a>. The current penalty for
+          {{ scenario.company.name }}
+          is
+          {{ scenario.company.currentPenalty }}
+          and the penalty will increase over time. You should file as soon as possible.</p>
 
-      <h2 class="govuk-heading-m">What to do next</h2>
-      <h3 class="govuk-heading-s">Close your company</h3>
-      <p>If the company is no longer required you should
-        <a href="https://www.gov.uk/strike-off-your-company-from-companies-register">close the company</a>. You'll still need to pay late filing penalties.</p>
-      <h3 class="govuk-heading-s">File your
-        {{ scenario.company.reason }}</h3>
-      <p>If you want to keep
-        {{ scenario.company.name }}
-        you should to file your
-        {{ scenario.company.reason }}</a>
-      as soon as possible.
-      <a href="https://www.gov.uk/government/publications/life-of-a-company-annual-requirements/life-of-a-company-part-1-accounts">Read the guidance on how to file documents for a company.</a>
+        <h2 class="govuk-heading-m">What to do next</h2>
+        <h3 class="govuk-heading-s">Close your company</h3>
+        <p>If the company is no longer required you should
+          <a href="https://www.gov.uk/strike-off-your-company-from-companies-register">close the company</a>. You'll still need to pay late filing penalties.</p>
+        <h3 class="govuk-heading-s">File your
+          {{ scenario.company.reason }}</h3>
+        <p>If you want to keep
+          {{ scenario.company.name }}
+          you should to file your
+          {{ scenario.company.reason }}</a>
+        as soon as possible.
+        <a href="https://www.gov.uk/government/publications/life-of-a-company-annual-requirements/life-of-a-company-part-1-accounts">Read the guidance on how to file documents for a company.</a>
 
-      <p class="govuk-body">
-        <a href="https://www.gov.uk/service-manual/user-centred-design/resources/patterns/feedback-pages.html" class="govuk-link">What did you think of this service?</a>
-        (takes 30 seconds)
-      </p>
+        <p class="govuk-body">
+          <a href="https://www.gov.uk/service-manual/user-centred-design/resources/patterns/feedback-pages.html" class="govuk-link">What did you think of this service?</a>
+          (takes 30 seconds)
+        </p>
+      </div>
     </div>
-  </div>
-{% endblock %}
+  {% endblock %}
