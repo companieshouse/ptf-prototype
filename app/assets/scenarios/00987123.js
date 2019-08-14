@@ -1,17 +1,17 @@
 module.exports = {
   company: {
-    name: 'BAD NEWS LIMITED',
-    number: '00998877',
-    authCode: '00998877DEFSTATAA',
+    name: 'DOUBLES LIMITED',
+    number: '00987123',
+    authCode: '00987123DEFSTATAAAC',
     status: 'Active',
     incorporationDate: '12 December 2008',
     companyType: 'Private Limited Company',
     address: '25 Bones Lane\nCardiff\nCF13 2WW',
-    accountsDue: '12 August 2019',
+    accountsDue: '15 June 2019',
     accountsStatus: 'overdue',
-    csDue: '15 January 2020',
-    csStatus: 'notDue',
-    reason: 'accounts',
+    csDue: '15 June 2020',
+    csStatus: 'overdue',
+    reason: 'accounts and confirmation statement',
     PTFRequested: 'no',
     currentPenalty: '£150'
   }
