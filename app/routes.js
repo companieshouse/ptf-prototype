@@ -41,8 +41,7 @@ router.post('/company-number', function (req, res) {
   if (
     referenceConv !== '00112233DEFSTATAC' &&
     referenceConv !== '00998877DEFSTATAA' &&
-    referenceConv !== '00246666DEFSTATAA' &&
-    referenceConv !== '00987123DEFSTATAAAC'
+    referenceConv !== '00246666DEFSTATAA'
   ) {
     referenceErr.type = 'invalid'
     referenceErr.text = 'Enter your reference exactly as shown on your default statutory letter'
