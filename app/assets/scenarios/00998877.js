@@ -12,7 +12,6 @@ module.exports = {
     csDue: '15 January 2020',
     csStatus: 'notDue',
     reason: 'accounts',
-    PTFRequested: 'no',
-    currentPenalty: '£150'
+    PTFRequested: 'no'
   }
 }
