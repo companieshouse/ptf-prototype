@@ -12,7 +12,7 @@
     <div class="govuk-grid-column-two-thirds">
       <div class="govuk-panel govuk-panel--confirmation">
         <h1 class="govuk-panel__title">{{scenario.company.name}}
-          is no longer active</h1>
+          is no longer required</h1>
       </div>
     </div>
   </div>
@@ -37,7 +37,12 @@
           {{ scenario.company.accountsDue }}
           and is now overdue.
           {{scenario.company.reason | capitalize}}
-          filed late are subject to a penalty. The penalty increases over time. You should file as soon as possible.</p>
+          filed late are subject to
+          <a href="https://www.gov.uk/annual-accounts/penalties-for-late-filing">a penalty</a>. The current penalty for
+          {{ scenario.company.name }}
+          is
+          {{ scenario.company.currentPenalty }}
+          and the penalty will increase over time. You should file as soon as possible.</p>
       {% endif %}
 
       <h2 class="govuk-heading-m">What to do next</h2>
@@ -48,7 +53,7 @@
         {{scenario.company.reason}}</h3>
       <p>If you want to keep
         {{scenario.company.name}}
-        you should to file your
+        you should file your
         {{ scenario.company.reason }}</a>
       as soon as possible. You'll need the authentication code to file.</p>
     <p>
