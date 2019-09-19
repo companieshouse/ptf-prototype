@@ -19,12 +19,9 @@ router.get('/company-number', function (req, res) {
 })
 router.post('/company-number', function (req, res) {
   var companyNumber = req.body.companyNumber
-  var reference = req.body.reference
-  var referenceErr = {}
   var companyErr = {}
   var errorFlag = false
   var errorList = []
-  var referenceConv = reference.toUpperCase()
 
   if (companyNumber.length < 8) {
     companyErr.type = 'invalid'
@@ -38,6 +35,30 @@ router.post('/company-number', function (req, res) {
     companyErr.flag = true
     errorFlag = true
   }
+  if (errorFlag === true) {
+    res.render('company-number', {
+      errorList: errorList,
+      companyErr: companyErr,
+      companyNumber: companyNumber
+    })
+  } else {
+    req.session.ptf = []
+    req.session.scenario = require('../app/assets/scenarios/' + companyNumber)
+    res.redirect('reference-number')
+  }
+})
+router.get('/reference-number', function (req, res) {
+  res.render('reference-number', {
+    scenario: req.session.scenario
+  })
+})
+router.post('/reference-number', function (req, res) {
+  var errorFlag = false
+  var errorList = []
+  var reference = req.body.reference
+  var referenceErr = {}
+  var referenceConv = reference.toUpperCase()
+
   if (
     referenceConv !== '00112233DEFSTATAC' &&
     referenceConv !== '00998877DEFSTATAA' &&
@@ -55,16 +76,14 @@ router.post('/company-number', function (req, res) {
     errorFlag = true
   }
   if (errorFlag === true) {
-    res.render('company-number', {
+    res.render('reference-number', {
       errorList: errorList,
       referenceErr: referenceErr,
-      companyErr: companyErr,
       reference: reference,
-      companyNumber: companyNumber
+      scenario: req.session.scenario
     })
   } else {
     req.session.ptf = []
-    req.session.scenario = require('../app/assets/scenarios/' + companyNumber)
     res.redirect('check-company')
   }
 })

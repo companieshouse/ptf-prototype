@@ -16,7 +16,7 @@
   }) }}
   {{ govukBackLink({
     text: "Back",
-    href: "sign-in"
+    href: "company-number"
   }) }}
 {% endblock %}
 
@@ -24,64 +24,61 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      {% if referenceErr or companyErr %}
+      {% if referenceErr %}
         {{ govukErrorSummary({
       titleText: "We couldn't find your reference details",
       errorList: errorList,
-      text: companyErr.text,
       text: referenceErr.text
     }) }}
       {% endif %}
 
-      {% set companyDetailsHTML %}
-      <p>
-        Use the
-        <a href="https://beta.companieshouse.gov.uk/" target="_blank">Companies House service</a>
-        to find it.
-      </p>
-      {% endset -%}
-
       <h1 class="govuk-heading-xl">
-        What is the Company Number?
+        What are your Overdue Filing Notice details?
       </h1>
 
       <form method="post" action="">
-        {% if companyErr.flag %}
+
+        {% if referenceErr.flag %}
           {{ govukInput({
                 label: {
-                  text: "Company number"
+                  text: "Overdue Filing Notice reference"
                 },
                 hint: {
-                  text: "This is the 8 character reference issued by Companies House when the company was set up."
+                  text: "This is the 17 character reference shown on your Overdue Filing Notice."
                 },
                 errorMessage: {
-                  text: companyErr.text
+                  text: referenceErr.text
                 },
-                classes: "govuk-input--company-number",
-                id: "company-number",
-                name: "companyNumber",
-                value: companyNumber
+                classes: "govuk-input--reference",
+                id: "reference",
+                name: "reference",
+                value: reference
               }) }}
         {% else %}
           {{ govukInput({
                 label: {
-                  text: "Company number"
+                  text: "Overdue Filing Notice reference"
                 },
                 hint: {
-                  text: "This is the 8 character reference issued by Companies House when the company was set up."
+                  text: "This is the 17 character reference shown on your Overdue Filing Notice."
                 },
-                classes: "govuk-input--company-number",
-                id: "company-number",
-                name: "companyNumber",
-                value: companyNumber
+                classes: "govuk-input--defStat-reference",
+                id: "reference",
+                name: "reference",
+                value: reference
               }) }}
         {% endif %}
-
-        {{ govukDetails({
-        summaryText: "Help with the company number",
-        html: companyDetailsHTML
-      }) }}
-
+        <div class="govuk-form-group">
+          {% set detailsHTML %}
+          <p>
+            This reference is shown on the top left of the of the Overdue Filing Notice.
+          </p>
+          {% endset -%}
+          {{ govukDetails({
+                summaryText: "Help with the Overdue Filing Notice reference",
+                html: detailsHTML
+              }) }}
+        </div>
         {{ govukButton({
               text: "Continue"
             }) }}
