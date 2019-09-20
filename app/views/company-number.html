@@ -41,10 +41,6 @@
       </p>
       {% endset -%}
 
-      <h1 class="govuk-heading-xl">
-        What is the Company Number?
-      </h1>
-
       <form method="post" action="">
         {% if companyErr.flag %}
           {{ govukInput({
@@ -76,11 +72,6 @@
                 value: companyNumber
               }) }}
         {% endif %}
-
-        {{ govukDetails({
-        summaryText: "Help with the company number",
-        html: companyDetailsHTML
-      }) }}
 
         {{ govukButton({
               text: "Continue"

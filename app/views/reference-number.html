@@ -33,7 +33,7 @@
       {% endif %}
 
       <h1 class="govuk-heading-xl">
-        What are your Overdue Filing Notice details?
+        What is your overdue filing reference?
       </h1>
 
       <form method="post" action="">
@@ -44,7 +44,7 @@
                   text: "Overdue Filing Notice reference"
                 },
                 hint: {
-                  text: "This is the 17 character reference shown on your Overdue Filing Notice."
+                  text: "This is the 17 character reference shown on your overdue filing letter."
                 },
                 errorMessage: {
                   text: referenceErr.text
@@ -60,7 +60,7 @@
                   text: "Overdue Filing Notice reference"
                 },
                 hint: {
-                  text: "This is the 17 character reference shown on your Overdue Filing Notice."
+                  text: "This is the 17 character reference shown on your overdue filing letter."
                 },
                 classes: "govuk-input--defStat-reference",
                 id: "reference",
@@ -70,12 +70,15 @@
         {% endif %}
         <div class="govuk-form-group">
           {% set detailsHTML %}
-          <p>
-            This reference is shown on the top left of the of the Overdue Filing Notice.
-          </p>
+          <div class="panel panel-border-narrow">
+            <p>
+              You'll find the reference at the top right of your overdue filing letter.
+            </p>
+            <img src="/public/images/PenWebImage280px.png" class="call-out-image"/>
+          </div>
           {% endset -%}
           {{ govukDetails({
-                summaryText: "Help with the Overdue Filing Notice reference",
+                summaryText: "Help with the reference",
                 html: detailsHTML
               }) }}
         </div>
