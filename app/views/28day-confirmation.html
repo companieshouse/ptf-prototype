@@ -10,7 +10,7 @@
 {% block content %}
 
   {% set warningHTML %}
-  Failure to file confirmation statements or accounts is a criminal offence which can result in directors being fined personally in the criminal courts. Information about the consequences of not filing can be
+  Failure to file confirmation statements or accounts is a criminal offence and the company director can be fined in criminal court. Information about the consequences of not filing can be
   <a href="https://www.gov.uk/government/publications/late-filing-penalties/late-filing-penalties#late-filing-penalty-fees">found in our guidance</a>.
   {% endset %}
   <div class="govuk-grid-row">
@@ -41,7 +41,8 @@
       {% if scenario.company.reason === 'accounts' %}
         <p>You should file as soon as possible.
           {{scenario.company.reason | capitalize}}
-          filed late are subject to a penalty. The penalty increases over time. You'll need the authentication code to file.
+          filed late are subject to a penalty. The penalty increases over time.</p>
+        <p>You'll need the authentication code to file.
         </p>
       {% endif %}
       <p>
