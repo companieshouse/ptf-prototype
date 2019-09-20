@@ -1,0 +1,92 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  {% if errorList.length > 0 %}
+    Error:
+  {% endif %}
+  Tell us your details
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "alpha"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "company-number"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {% if referenceErr %}
+        {{ govukErrorSummary({
+      titleText: "We couldn't find your reference details",
+      errorList: errorList,
+      text: referenceErr.text
+    }) }}
+      {% endif %}
+
+      <h1 class="govuk-heading-xl">
+        What is your overdue filing reference?
+      </h1>
+
+      <form method="post" action="">
+
+        {% if referenceErr.flag %}
+          {{ govukInput({
+                label: {
+                  text: "Overdue Filing Notice reference"
+                },
+                hint: {
+                  text: "This is the 17 character reference shown on your overdue filing letter."
+                },
+                errorMessage: {
+                  text: referenceErr.text
+                },
+                classes: "govuk-input--reference",
+                id: "reference",
+                name: "reference",
+                value: reference
+              }) }}
+        {% else %}
+          {{ govukInput({
+                label: {
+                  text: "Overdue Filing Notice reference"
+                },
+                hint: {
+                  text: "This is the 17 character reference shown on your overdue filing letter."
+                },
+                classes: "govuk-input--defStat-reference",
+                id: "reference",
+                name: "reference",
+                value: reference
+              }) }}
+        {% endif %}
+        <div class="govuk-form-group">
+          {% set detailsHTML %}
+          <div class="panel panel-border-narrow">
+            <p>
+              You'll find the reference at the top right of your overdue filing letter.
+            </p>
+            <img src="/public/images/PenWebImage280px.png" class="call-out-image"/>
+          </div>
+          {% endset -%}
+          {{ govukDetails({
+                summaryText: "Help with the reference",
+                html: detailsHTML
+              }) }}
+        </div>
+        {{ govukButton({
+              text: "Continue"
+            }) }}
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

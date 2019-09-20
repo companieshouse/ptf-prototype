@@ -33,9 +33,13 @@
     }) }}
       {% endif %}
 
-      <h1 class="govuk-heading-xl">
-        What are your default statutory details?
-      </h1>
+      {% set companyDetailsHTML %}
+      <p>
+        Use the
+        <a href="https://beta.companieshouse.gov.uk/" target="_blank">Companies House service</a>
+        to find it.
+      </p>
+      {% endset -%}
 
       <form method="post" action="">
         {% if companyErr.flag %}
@@ -69,47 +73,6 @@
               }) }}
         {% endif %}
 
-        {% if referenceErr.flag %}
-          {{ govukInput({
-                label: {
-                  text: "DEFSTAT reference"
-                },
-                hint: {
-                  text: "This is the 17 character reference shown on your Default Statutory notification."
-                },
-                errorMessage: {
-                  text: referenceErr.text
-                },
-                classes: "govuk-input--reference",
-                id: "reference",
-                name: "reference",
-                value: reference
-              }) }}
-        {% else %}
-          {{ govukInput({
-                label: {
-                  text: "DEFSTAT reference"
-                },
-                hint: {
-                  text: "This is the 17 character reference shown on your Default Statutory notification."
-                },
-                classes: "govuk-input--defStat-reference",
-                id: "reference",
-                name: "reference",
-                value: reference
-              }) }}
-        {% endif %}
-        <div class="govuk-form-group">
-          {% set detailsHTML %}
-          <p>
-            Your company number and DEFSTAT reference are shown on the top left of the of the Default Statutory notification.
-          </p>
-          {% endset -%}
-          {{ govukDetails({
-                summaryText: "Help with company number",
-                html: detailsHTML
-              }) }}
-        </div>
         {{ govukButton({
               text: "Continue"
             }) }}

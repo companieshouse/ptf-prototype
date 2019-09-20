@@ -9,6 +9,10 @@
 
 {% block content %}
 
+  {% set warningHTML %}
+  Failure to file confirmation statements or accounts is a criminal offence and the company director can be fined in criminal court. Information about the consequences of not filing can be
+  <a href="https://www.gov.uk/government/publications/late-filing-penalties/late-filing-penalties#late-filing-penalty-fees">found in our guidance</a>.
+  {% endset %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
@@ -35,20 +39,22 @@
       <h2 class="govuk-heading-m">What happens next</h2>
 
       {% if scenario.company.reason === 'accounts' %}
-        <p>{{scenario.company.reason | capitalize}}
-          filed late are subject to a penalty. The penalty increases over time. You'll need the authentication code to file. You should file as soon as possible.</p>
+        <p>You should file as soon as possible.
+          {{scenario.company.reason | capitalize}}
+          filed late are subject to a penalty. The penalty increases over time.</p>
+        <p>You'll need the authentication code to file.
+        </p>
       {% endif %}
-      <p>You have 28 days to file the
-        {{scenario.company.reason}}
-        before we contact you again.</p>
       <p>
         <a href="https://www.gov.uk/government/publications/life-of-a-company-annual-requirements/life-of-a-company-part-1-accounts">Read the guidance on how to file documents for a company.</a>
       </p>
+
+      {{ govukWarningText({
+          html: warningHTML,
+          iconFallbackText: "Warning"
+        }) }}
       <p>If the company is no longer required you can
         <a href="https://www.gov.uk/strike-off-your-company-from-companies-register">close the company</a>.</p>
-
-      <p>Failure to file confirmation statements, annual returns or accounts is a criminal offence which can result in directors being fined personally in the criminal courts. Information about the consequences of not filing can be
-        <a href="https://www.gov.uk/government/publications/late-filing-penalties/late-filing-penalties#late-filing-penalty-fees">found in our guidance</a>.</p>
     </p>
 
     <p class="govuk-body">
