@@ -17,9 +17,9 @@
     <div class="govuk-grid-column-two-thirds">
 
       <div class="govuk-panel govuk-panel--confirmation">
-        <h1 class="govuk-panel__title">{{scenario.company.name}}
-          has 28 days to file its
-          {{scenario.company.reason}}</h1>
+        <h1 class="govuk-panel__title">You've told us
+          {{scenario.company.name}}
+          is still required</h1>
         <div class="govuk-panel__body">
           Your reference number is the company number<br>
           <strong>{{ scenario.company.number }}</strong>
@@ -38,15 +38,18 @@
 
       <h2 class="govuk-heading-m">What happens next</h2>
 
+      <p class="govuk-body">{{scenario.company.name}}
+        will be kept on the register.</p>
+
       {% if scenario.company.reason === 'accounts' %}
-        <p>You should file as soon as possible.
+        <p>The company must file it's accounts by
+          <span class="govuk-!-font-weight-bold">22 October 2019</span>.
           {{scenario.company.reason | capitalize}}
-          filed late are subject to a penalty. The penalty increases over time.</p>
-        <p>You'll need the authentication code to file.
-        </p>
+          filed late are subject to a penalty. The penalty increases the later the accounts are filed.</p>
       {% endif %}
       <p>
         <a href="https://www.gov.uk/government/publications/life-of-a-company-annual-requirements/life-of-a-company-part-1-accounts">Read the guidance on how to file documents for a company.</a>
+        You'll need an authentication code to file online.
       </p>
 
       {{ govukWarningText({

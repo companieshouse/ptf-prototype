@@ -144,7 +144,8 @@ router.get('/check-company', function (req, res) {
   })
   router.get('/options', function (req, res) {
     res.render('options', {
-      scenario: req.session.scenario
+      scenario: req.session.scenario,
+      email: req.session.email
     })
   })
 })
