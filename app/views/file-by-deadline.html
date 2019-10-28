@@ -4,8 +4,8 @@
   {% if errorList.length > 0 %}
     Error:
   {% endif %}
-  Tell us if you want to keep
-  {{scenario.company.name}}
+  Tell us if you intend to file by
+  {{scenario.company.newDeadline}}
 {% endblock %}
 {% block beforeContent %}
   {{ govukPhaseBanner({
@@ -24,26 +24,25 @@
     <div class="govuk-grid-column-two-thirds">
       {% if errorList.length > 0 %}
         {{ govukErrorSummary({
-          titleText: "Tell us if you want to file now",
+          titleText: titleHTML,
           errorList: errorList
         }) }}
       {% endif %}
 
       {% set titleHTML %}
-      Do you want to file the
-      {{scenario.company.reason}}
-      for
+      Will you file for
       {{scenario.company.name}}
-      now?
+      by
+      {{scenario.company.newDeadline}}?
       {% endset %}
 
       <form action="" method="post">
 
         {{ govukRadios({
               classes: "govuk-radios--inline",
-              idPrefix: "file-now",
-              name: "fileNow",
-              errorMessage: fileCompanyError,
+              idPrefix: "file-by-deadline",
+              name: "fileByDeadline",
+              errorMessage: fByCompanyError,
               fieldset: {
                 legend: {
                   text: titleHTML,
