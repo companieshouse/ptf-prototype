@@ -1,0 +1,88 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  {% if errorList.length > 0 %}
+    Error:
+  {% endif %}
+  Tell us if you would like to give us more information
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "alpha"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+
+  {% set backLinkHref %}
+  {{ backLink }}
+  {% endset -%}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: ''
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% if errorList.length > 0 %}
+        {{ govukErrorSummary({
+              titleText: "There was a problem with the information you gave us",
+              errorList: errorList
+            }) }}
+      {% endif %}
+
+      <form action="" method="post">
+
+        {% if errorList.length > 0 %}
+          {% set moreInfoError = {
+            text: moreInfoErr.text
+          } %}
+        {% else %}
+          {% set moreInfoError = false %}
+        {% endif %}
+
+        {% set hintHTML %}
+        Anything you tell us will be kept confidential.
+        {% endset -%}
+
+        {{ govukRadios({
+              classes: "govuk-radios--inline",
+              idPrefix: "tell-us",
+              name: "moreInfo",
+              errorMessage: moreInfoError,
+              fieldset: {
+                legend: {
+                  text: "Do you want to tell us why you haven't filed yet?",
+                  isPageHeading: true,
+                  classes: 'govuk-fieldset__legend--xl'
+                }
+              },
+              hint: {
+                html: hintHTML
+              },
+              items: [
+                {
+                  value: "yes",
+                  text: "Yes"
+                },
+                {
+                  value: "no",
+                  text: "No"
+                }
+              ]
+            }) }}
+
+        {{ govukButton({
+              text: "Continue"
+            }) }}
+
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

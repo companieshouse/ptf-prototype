@@ -9,9 +9,10 @@ module.exports = {
     address: '25 Bones Lane\nCardiff\nCF13 2WW',
     accountsDue: '01 January 2020',
     accountsStatus: 'notDue',
-    csDue: '15 September 2019',
+    csDue: '01 October 2019',
     csStatus: 'overdue',
     reason: 'confirmation statement',
-    PTFRequested: 'no'
+    PTFRequested: 'no',
+    newDeadline: '15 October 2019'
   }
 }
