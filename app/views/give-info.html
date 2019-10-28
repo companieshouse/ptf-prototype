@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  {% if errorList.length > 0 %}
+    Error:
+  {% endif %}
+  Tell us why you haven't filed yet
+{% endblock %}
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+  tag: {
+    text: "alpha"
+  },
+  html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+}) }}
+  {{ govukBackLink({
+  text: "Back",
+  href: "pre-info"
+}) }}
+{% endblock %}
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {% if errorList.length > 0 %}
+        {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errorList
+      }) }}
+      {% endif %}
+      <h1 class="govuk-heading-xl">Why haven't you filed yet?</h1>
+      <form action="" method="post">
+        {% if Err.flag %}
+          {{ govukTextarea({
+              name: "Information",
+              id: "information",
+              rows: '8',
+              label: {
+                text: "Anything you tell us to support your application will be kept confidential.",
+                isPageHeading: true,
+                classes: 'govuk-heading-large'
+              },
+              errorMessage: {
+                text: "Enter information"
+              }
+            }) }}
+        {% else %}
+          {{ govukTextarea({
+              name: "Information",
+              id: "information",
+              value: info,
+              rows: '8',
+              label: {
+                text: "Anything you tell us to support your application will be kept confidential.",
+                isPageHeading: true,
+                classes: 'govuk-heading-large'
+              }
+            }) }}
+        {% endif %}
+
+        {{ govukButton({
+              text: "Continue"
+            }) }}
+
+      </form>
+    </div>
+  </div>
+</main>
+</div>
+
+{% endblock %}
