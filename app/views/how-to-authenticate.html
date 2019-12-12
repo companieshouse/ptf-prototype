@@ -1,0 +1,91 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  {% if errorList.length > 0 %}
+    Error:
+  {% endif %}
+  How do you want to authenticate for
+  {{scenario.company.name}}?
+{% endblock %}
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+  tag: {
+    text: "alpha"
+  },
+  html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+}) }}
+  {{ govukBackLink({
+  text: "Back",
+  href: "company-number"
+}) }}
+{% endblock %}
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {% if referenceErr.flag %}
+        {{ govukInput({
+              label: {
+                text: "Overdue Filing Notice reference"
+              },
+              hint: {
+                text: "This is the 17 character reference shown on your overdue filing letter."
+              },
+              errorMessage: {
+                text: referenceErr.text
+              },
+              classes: "govuk-input--reference",
+              id: "reference",
+              name: "reference",
+              value: reference
+            }) }}
+      {% endif %}
+
+      {% set titleHTML %}
+      How do you want to authenticate for
+      {{scenario.company.name}}?
+      {% endset %}
+
+      <form action="" method="post">
+        {% set referenceHtml %}
+        {{ govukInput({
+  id: "authenticate-by-reference",
+  name: "authenticate-by-reference",
+  classes: "govuk-input--width-10",
+  label: {
+    text: "Reference number"
+  }
+}) }}
+        {% endset -%}
+
+        {{ govukRadios({
+  idPrefix: "how-to-authenticate",
+  name: "howToAuthenticate",
+  fieldset: {
+    legend: {
+      text: titleHTML,
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--xl"
+    }
+  },
+  items: [
+  {
+    value: "authCode",
+    text: "Using the company authentication code"
+},
+    {
+      value: "reference",
+      text: "Using the overdue filing reference",
+      conditional: {
+        html: referenceHtml
+      }
+    }
+  ]
+}) }}
+        {{ govukButton({
+            text: "Continue"
+          }) }}
+      </form>
+    </div>
+  </div>
+
+{% endblock %}
