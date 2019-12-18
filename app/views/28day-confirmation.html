@@ -39,32 +39,24 @@
       <h2 class="govuk-heading-m">What happens next</h2>
 
       <p class="govuk-body">{{scenario.company.name}}
-        will be kept on the register.</p>
-
-      {% if scenario.company.reason === 'accounts' %}
-        <p>The company must file it's accounts by
+        will be kept on the register.
+        {% if scenario.company.reason === 'accounts' %}
+          The accounts must be filed by
           <span class="govuk-!-font-weight-bold">22 October 2019</span>.
           {{scenario.company.reason | capitalize}}
           filed late are subject to a penalty. The penalty increases the later the accounts are filed.</p>
       {% endif %}
-      <p>
-        <a href="https://www.gov.uk/government/publications/life-of-a-company-annual-requirements/life-of-a-company-part-1-accounts">Read the guidance on how to file documents for a company.</a>
-        You'll need an authentication code to file online.
-      </p>
 
       {{ govukWarningText({
           html: warningHTML,
           iconFallbackText: "Warning"
         }) }}
-      <p>If the company is no longer required you can
-        <a href="https://www.gov.uk/strike-off-your-company-from-companies-register">close the company</a>.</p>
-    </p>
 
-    <p class="govuk-body">
-      <a href="https://www.gov.uk/service-manual/user-centred-design/resources/patterns/feedback-pages.html" class="govuk-link">What did you think of this service?</a>
-      (takes 30 seconds)
-    </p>
+      <p class="govuk-body">
+        <a href="https://www.gov.uk/service-manual/user-centred-design/resources/patterns/feedback-pages.html" class="govuk-link">What did you think of this service?</a>
+        (takes 30 seconds)
+      </p>
+    </div>
   </div>
-</div>
 
 {% endblock %}
