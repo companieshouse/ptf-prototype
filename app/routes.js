@@ -44,7 +44,7 @@ router.post('/company-number', function (req, res) {
   } else {
     req.session.ptf = []
     req.session.scenario = require('../app/assets/scenarios/' + companyNumber)
-    res.redirect('how-to-authenticate')
+    res.redirect('check-company')
   }
 })
 router.get('/how-to-authenticate', function (req, res) {
@@ -88,7 +88,7 @@ router.post('/how-to-authenticate', function (req, res) {
           reference: reference,
           scenario: req.session.scenario
         })
-        res.redirect('/check-company')
+        res.redirect('/continue-trading')
         break
       }
   }
@@ -130,7 +130,7 @@ router.post('/reference-number', function (req, res) {
     })
   } else {
     req.session.ptf = []
-    res.redirect('check-company')
+    res.redirect('continue-trading')
   }
 })
 router.get('/authenticate', function (req, res) {
@@ -138,7 +138,7 @@ router.get('/authenticate', function (req, res) {
     scenario: req.session.scenario
   })
   router.post('/authenticate', function (req, res) {
-    res.redirect('check-company')
+    res.redirect('continue-trading')
   })
 })
 router.get('/check-company', function (req, res) {
