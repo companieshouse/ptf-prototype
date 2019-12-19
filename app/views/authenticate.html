@@ -63,9 +63,16 @@
           }) }}
         {% endif %}
 
-        {{ govukButton({
+        {% if scenario.company.persistentlyLate === 'yes' %}
+          {{ govukButton({
+  text: "Continue",
+  href: "/persistently-late"
+}) }}
+        {% else %}
+          {{ govukButton({
           text: "Continue"
         }) }}
+        {% endif %}
         <p class="govuk-body">
           <a href="https://ewf.companieshouse.gov.uk/?_ga=2.259791299.813501771.1566987875-1638653194.1563432911" class="govuk-link" target="_blank">Request an authentication code</a>
         </p>
