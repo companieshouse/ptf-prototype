@@ -58,6 +58,7 @@ router.post('/how-to-authenticate', function (req, res) {
   var errorList = []
   var reference = req.body.reference
   var referenceErr = {}
+  var scenario = req.session.scenario
 
   switch (howToAuthenticate) {
     case 'authCode':
@@ -88,8 +89,12 @@ router.post('/how-to-authenticate', function (req, res) {
           reference: reference,
           scenario: req.session.scenario
         })
-        res.redirect('/continue-trading')
-        break
+        if (scenario.company.persistentlyLate === 'yes') {
+          res.redirect('/persistently-late')
+        } else {
+          res.redirect('/continue-trading')
+          break
+        }
       }
   }
 })
@@ -138,6 +143,14 @@ router.get('/authenticate', function (req, res) {
     scenario: req.session.scenario
   })
   router.post('/authenticate', function (req, res) {
+    res.redirect('warning')
+  })
+})
+router.get('/warning', function (req, res) {
+  res.render('warning', {
+    scenario: req.session.scenario
+  })
+  router.post('/warning', function (req, res) {
     res.redirect('continue-trading')
   })
 })
