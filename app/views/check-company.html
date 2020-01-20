@@ -108,7 +108,7 @@
     ],
     [
       {
-        text: "Accounts due"
+        text: "Accounts due by"
       },
       {
         html: AAoverdueHTML
@@ -116,7 +116,7 @@
     ],
     [
       {
-        text: "Confirmation statement due"
+        text: "Confirmation statement due by"
       },
       {
         html: CSoverdueHTML
@@ -128,7 +128,7 @@
       {% if scenario.company.PTFRequested !== 'yes' %}
         {{ govukButton({
 text: "Continue",
-href: "how-to-authenticate"
+href: "authenticate"
 }) }}
 
       {% else %}
