@@ -42,7 +42,7 @@
       {% endset -%}
 
       <h1 class="govuk-heading-xl">
-        What is the Company Number?
+        What is the company number?
       </h1>
 
       <form method="post" action="">
@@ -76,11 +76,10 @@
                 value: companyNumber
               }) }}
         {% endif %}
-
         {{ govukDetails({
-        summaryText: "Help with the company number",
-        html: companyDetailsHTML
-      }) }}
+                summaryText: "Help with company number",
+                html: "<p>Use the <a target='blank' href='https://beta.companieshouse.gov.uk/'>Companies House service</a> to find it.</p>"
+            }) }}
 
         {{ govukButton({
               text: "Continue"

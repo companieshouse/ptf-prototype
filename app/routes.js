@@ -44,7 +44,58 @@ router.post('/company-number', function (req, res) {
   } else {
     req.session.ptf = []
     req.session.scenario = require('../app/assets/scenarios/' + companyNumber)
-    res.redirect('reference-number')
+    res.redirect('check-company')
+  }
+})
+router.get('/how-to-authenticate', function (req, res) {
+  res.render('how-to-authenticate', {
+    scenario: req.session.scenario
+  })
+})
+router.post('/how-to-authenticate', function (req, res) {
+  var howToAuthenticate = req.body.howToAuthenticate
+  var errorFlag = false
+  var errorList = []
+  var reference = req.body.reference
+  var referenceErr = {}
+  var scenario = req.session.scenario
+
+  switch (howToAuthenticate) {
+    case 'authCode':
+      res.redirect('/authenticate')
+      break
+    case 'reference':
+
+      if (
+        reference !== '00112233DEFSTATAC' &&
+        reference !== '00998877DEFSTATAA' &&
+        reference !== '00246666DEFSTATAA'
+      ) {
+        referenceErr.type = 'invalid'
+        referenceErr.text = 'Enter your reference exactly as shown on your default statutory letter'
+        referenceErr.flag = true
+        errorFlag = true
+      }
+      if (reference === '') {
+        referenceErr.type = 'blank'
+        referenceErr.text = 'You must enter a default statutory reference'
+        referenceErr.flag = true
+        errorFlag = true
+      }
+      if (errorFlag === true) {
+        res.render('reference', {
+          errorList: errorList,
+          referenceErr: referenceErr,
+          reference: reference,
+          scenario: req.session.scenario
+        })
+        if (scenario.company.persistentlyLate === 'yes') {
+          res.redirect('/persistently-late')
+        } else {
+          res.redirect('/continue-trading')
+          break
+        }
+      }
   }
 })
 router.get('/reference-number', function (req, res) {
@@ -84,8 +135,24 @@ router.post('/reference-number', function (req, res) {
     })
   } else {
     req.session.ptf = []
-    res.redirect('check-company')
+    res.redirect('continue-trading')
   }
+})
+router.get('/authenticate', function (req, res) {
+  res.render('authenticate', {
+    scenario: req.session.scenario
+  })
+  router.post('/authenticate', function (req, res) {
+    res.redirect('warning')
+  })
+})
+router.get('/warning', function (req, res) {
+  res.render('warning', {
+    scenario: req.session.scenario
+  })
+  router.post('/warning', function (req, res) {
+    res.redirect('continue-trading')
+  })
 })
 router.get('/check-company', function (req, res) {
   res.render('check-company', {
@@ -144,7 +211,8 @@ router.get('/check-company', function (req, res) {
   })
   router.get('/options', function (req, res) {
     res.render('options', {
-      scenario: req.session.scenario
+      scenario: req.session.scenario,
+      email: req.session.email
     })
   })
 })
