@@ -19,16 +19,25 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
       <div class="interruption-card">
-        <h1 class="govuk-heading-xl">Attention</h1>
-        <p class="govuk-body-l">You may be opening yourself up to prosecution!!!</p>
+        <h1 class="govuk-heading-xl">Be aware</h1>
+        <p class="govuk-body-l">By telling us that
+          {{scenario.company.name}}
+          is still required you are confirming that you:</p>
+        <ul>
+          <li class="govuk-body-l">understand your filing obligations
+          </li>
+          <li class="govuk-body-l">intend to file for the company
+          </li>
+        </ul>
+        <p class="govuk-body">If you still do not file and we believe the company is no longer in operation, we will take steps to close the company but its directors risk prosecution.</p>
+        <p class="govuk-body">If the company is not required, you should
+          <a class="govuk-body" href="http://resources.companieshouse.gov.uk/close-a-company/index.html">close the company.</a>
+        </p>
 
         {{ govukButton({
           text: "Continue",
           href: "/continue-trading",
           classes: "govuk-link govuk-!-margin-top-5 govuk-link--interrupt"
         }) }}
-        <p>
-          <a href="/sign-out" class="govuk-link">Save and sign out</a>
-        </p>
       </div>
     {% endblock %}
