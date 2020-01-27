@@ -14,6 +14,6 @@ module.exports = {
     reason: 'accounts',
     PTFRequested: 'no',
     currentPenalty: '£150',
-    newDeadline: '25 December 2019'
+    newDeadline: '25 February 2020'
   }
 }
