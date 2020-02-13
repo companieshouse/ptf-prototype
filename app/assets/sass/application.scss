@@ -55,6 +55,19 @@ $govuk-assets-path: '/govuk/assets/';
 .interruption-card {
   padding: 2em 3em;
   background-color: govuk-colour("blue");
+  position: relative;
+
+  .govuk-warning-text__icon--interrupt {
+    left: 700px;
+    bottom: 63px;
+    font-size: 150px;
+    line-height: 169px;
+    min-width: 169px;
+    min-height: 169px;
+    border-color: govuk-colour("white");
+    background-color: govuk-colour("white");
+    color: govuk-colour("blue");
+  }
 
   &.interruption-card-paper {
     background-color: govuk-colour("blue");
