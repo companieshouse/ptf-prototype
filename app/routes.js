@@ -219,6 +219,7 @@ router.get('/check-company', function (req, res) {
 router.get('/confirmation', function (req, res) {
   var email = {}
   email = req.session.ptf.pop()
+
   res.render('confirmation', {
     scenario: req.session.scenario,
     email: req.session.email

@@ -19,25 +19,27 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
       <div class="interruption-card">
-        <h1 class="govuk-heading-xl">Be aware</h1>
-        <p class="govuk-body-l">By telling us that
-          {{scenario.company.name}}
-          is still required you are confirming that you:</p>
-        <ul>
-          <li class="govuk-body-l">understand your filing obligations
-          </li>
-          <li class="govuk-body-l">intend to file for the company
-          </li>
-        </ul>
-        <p class="govuk-body">If you still do not file and we believe the company is no longer in operation, we will take steps to close the company but its directors risk prosecution.</p>
-        <p class="govuk-body">If the company is not required, you should
-          <a class="govuk-body" href="http://resources.companieshouse.gov.uk/close-a-company/index.html">close the company.</a>
-        </p>
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-two-thirds">
+            <h1 class="govuk-heading-xl">Be aware</h1>
+            <p class="govuk-body-l">By telling us that
+              {{scenario.company.name}}
+              is still required you are confirming that you:</p>
+            <ul class="govuk-list--bullet">
+              <li class="govuk-body-l">understand your filing obligations
+              </li>
+              <li class="govuk-body-l">intend to file for the company
+              </li>
+            </ul>
+            <p class="govuk-body-l">If you tell us a company is still required and don't file within 28 days, we may prosecute the company directors.</p>
 
-        {{ govukButton({
+            {{ govukButton({
           text: "Continue",
           href: "/continue-trading",
           classes: "govuk-link govuk-!-margin-top-5 govuk-link--interrupt"
         }) }}
+          </div>
+        </div>
+        <span class="govuk-warning-text__icon govuk-warning-text__icon--interrupt" aria-hidden="true">!</span>
       </div>
     {% endblock %}
