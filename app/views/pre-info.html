@@ -7,50 +7,45 @@
   Tell us if you would like to give us more information
 {% endblock %}
 
-{% block beforeContent %}
-  {{ govukPhaseBanner({
-    tag: {
-      text: "alpha"
-    },
-    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
-  }) }}
-
-  {% set backLinkHref %}
-  {{ backLink }}
-  {% endset -%}
-
+{% block backLink %}
   {{ govukBackLink({
+    text: "Back",
+    href: "sign-in"
+  }) }}
+{% endblock %}
+
+{{ govukBackLink({
     text: "Back",
     href: ''
   }) }}
 {% endblock %}
 
 {% block content %}
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
 
-      {% if errorList.length > 0 %}
-        {{ govukErrorSummary({
+    {% if errorList.length > 0 %}
+      {{ govukErrorSummary({
               titleText: "There was a problem with the information you gave us",
               errorList: errorList
             }) }}
+    {% endif %}
+
+    <form action="" method="post">
+
+      {% if errorList.length > 0 %}
+        {% set moreInfoError = {
+          text: moreInfoErr.text
+        } %}
+      {% else %}
+        {% set moreInfoError = false %}
       {% endif %}
 
-      <form action="" method="post">
+      {% set hintHTML %}
+      Anything you tell us will be kept confidential.
+      {% endset -%}
 
-        {% if errorList.length > 0 %}
-          {% set moreInfoError = {
-            text: moreInfoErr.text
-          } %}
-        {% else %}
-          {% set moreInfoError = false %}
-        {% endif %}
-
-        {% set hintHTML %}
-        Anything you tell us will be kept confidential.
-        {% endset -%}
-
-        {{ govukRadios({
+      {{ govukRadios({
               classes: "govuk-radios--inline",
               idPrefix: "tell-us",
               name: "moreInfo",
@@ -77,12 +72,12 @@
               ]
             }) }}
 
-        {{ govukButton({
+      {{ govukButton({
               text: "Continue"
             }) }}
 
-      </form>
-    </div>
+    </form>
   </div>
+</div>
 
 {% endblock %}
