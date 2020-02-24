@@ -6,18 +6,14 @@
   {% endif %}
   Tell us why you haven't filed yet
 {% endblock %}
-{% block beforeContent %}
-  {{ govukPhaseBanner({
-  tag: {
-    text: "alpha"
-  },
-  html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
-}) }}
+
+{% block backLink %}
   {{ govukBackLink({
-  text: "Back",
-  href: "pre-info"
-}) }}
+    text: "Back",
+    href: "sign-in"
+  }) }}
 {% endblock %}
+
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">

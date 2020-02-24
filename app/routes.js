@@ -171,7 +171,7 @@ router.get('/check-company', function (req, res) {
         res.redirect('/confirmation')
         break
       case 'no':
-        res.redirect('/options')
+        res.redirect('/not-required')
         break
     }
   })
@@ -185,10 +185,10 @@ router.get('/check-company', function (req, res) {
 
     switch (wantCompany) {
       case 'yes':
-        res.redirect('/28day-confirmation')
+        res.redirect('/still-required')
         break
       case 'no':
-        res.redirect('/options')
+        res.redirect('/not-required')
         break
     }
   })
@@ -205,12 +205,12 @@ router.get('/check-company', function (req, res) {
         res.redirect('/filingjourney')
         break
       case 'no':
-        res.redirect('/28day-confirmation')
+        res.redirect('/still-required')
         break
     }
   })
-  router.get('/options', function (req, res) {
-    res.render('options', {
+  router.get('/not-required', function (req, res) {
+    res.render('not-required', {
       scenario: req.session.scenario,
       email: req.session.email
     })
@@ -219,15 +219,16 @@ router.get('/check-company', function (req, res) {
 router.get('/confirmation', function (req, res) {
   var email = {}
   email = req.session.ptf.pop()
+
   res.render('confirmation', {
     scenario: req.session.scenario,
     email: req.session.email
   })
 })
-router.get('/28day-confirmation', function (req, res) {
+router.get('/still-required', function (req, res) {
   var email = {}
   email = req.session.ptf.pop()
-  res.render('28day-confirmation', {
+  res.render('still-required', {
     scenario: req.session.scenario,
     email: req.session.email
   })
