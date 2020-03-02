@@ -14,11 +14,7 @@
           {{scenario.company.name}}
           is no longer required</h1>
       </div>
-      <p class="govuk-body-l">
-        We've sent a confirmation email to
-        <span class="govuk-body-l govuk-!-font-weight-bold">{{ email }}</span>
-        which contains your reference number.
-      </p>
+
       <!-- <p>Your filing due date for the {{scenario.company.reason}} was {% if scenario.company.reason === 'confirmation statement' %} {{scenario.company.csDue}} and is now overdue. {% else %} {{ scenario.company.accountsDue }} and is now overdue.
       {{scenario.company.reason | capitalize}} filed late are subject to <a href="https://www.gov.uk/annual-accounts/penalties-for-late-filing">a penalty</a>. The current penalty for {{ scenario.company.name }} is {{ scenario.company.currentPenalty }} and
       the penalty will increase over time. You should file as soon as possible. {% endif %} </p> -->
@@ -32,8 +28,9 @@
     </p>
 
     <p>
+      If
       {{scenario.company.name}}
-      will receive a
+      files, it will receive a
       <a href="https://www.gov.uk/annual-accounts/penalties-for-late-filing">late filing penalty</a>
       that increases over time until the company is closed.</p>
 

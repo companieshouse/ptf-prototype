@@ -1,8 +1,8 @@
 module.exports = {
   company: {
-    name: 'Spotlight LTD',
+    name: 'SPOTLIGHT LTD',
     number: '00112233',
-    authCode: '00112233DEFSTATAC',
+    authCode: '444444',
     status: 'Active',
     incorporationDate: '12 December 2008',
     companyType: 'Private Limited Company',
