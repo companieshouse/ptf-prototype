@@ -22,9 +22,8 @@
       <h2 class="govuk-heading-m">What happens next</h2>
       <p>You should
         <a href="http://resources.companieshouse.gov.uk/close-a-company/index.html">close the company</a>
-        so that it is removed from the register. You do not need to file the
-        {{ scenario.company.reason }}
-        before closing the company.</p>
+        so that it is removed from the register. When you have closed the company, we will no longer pursue overdue accounts or confirmation statements. </p>
+        <P>If you do not close the company, we will start to close it and may prosecute the company directors.</P>
     </p>
 
     {% if scenario.company.reason !== 'confirmation statement' %}
