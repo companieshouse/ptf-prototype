@@ -23,8 +23,17 @@
       <p>You should
         <a href="http://resources.companieshouse.gov.uk/close-a-company/index.html">close the company</a>
         so that it is removed from the register. When you have closed the company, we will no longer pursue overdue accounts or confirmation statements. </p>
-        <P>If you do not close the company, we may prosecute the company directors.</P>
+        <P>If you do not close the company, we will start to close it and may prosecute the company directors.</P>
     </p>
+
+    {% if scenario.company.reason !== 'confirmation statement' %}
+      <p>
+        If
+        {{scenario.company.name}}
+        files, it will receive a
+        <a href="https://www.gov.uk/annual-accounts/penalties-for-late-filing">late filing penalty</a>
+        that increases over time until the company is closed.</p>
+    {% endif %}
 
     <p class="govuk-body">
       <a href="https://www.gov.uk/service-manual/user-centred-design/resources/patterns/feedback-pages.html" class="govuk-link">What did you think of this service?</a>
