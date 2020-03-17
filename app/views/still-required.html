@@ -26,11 +26,13 @@
         </div>
       </div>
 
+      {% set notCSHTML %}
       {% if scenario.company.reason !== 'confirmation statement' %}
         <p>, so the company will receive a
           <a href="https://www.gov.uk/annual-accounts/penalties-for-late-filing">late filing penalty</a>
           that increases over time until its accounts are filed</p>
       {% endif %}
+      {% endset %}
 
       {% if scenario.company.PTFRequested !== 'yes' %}
         <p class="govuk-body-l">
