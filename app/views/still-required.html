@@ -57,7 +57,12 @@
       <h2 class="govuk-heading-m">What happens next</h2>
       <p>{{ scenario.company.name }}
         will be kept on the register but it must file its
-        {{ scenario.company.reason }}. The original filing deadline has not been changed or extended.</p>
+        {{ scenario.company.reason }}.</p>
+      {% if scenario.company.reason !== 'confirmation statement' %}
+        <p>The company will receive a
+          <a href="https://www.gov.uk/annual-accounts/penalties-for-late-filing">late filing penalty</a>
+          that increases over time until its accounts are filed. The original filing deadline has not been changed or extended.</p>
+      {% endif %}
       <p>If
         {{ scenario.company.name }}
         has not filed by
