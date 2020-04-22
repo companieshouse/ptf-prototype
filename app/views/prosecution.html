@@ -16,37 +16,19 @@
 
       <p>The company
         {{scenario.company.name}}
-        has filed documents late in the past. You will need to contact us to tell us your company is still required.</p>
-
-      <h2 class="govuk-heading-m">Contact us</h2>
-      <h3 class="govuk-heading-s">By email</h2>
-      <p class="govuk-body">enquiries@companieshouse.gov.uk</p>
-      <h3 class="govuk-heading-m">By post</h2>
-      <h4 class="govuk-heading-s">England and Wales</h3>
-      <p class="govuk-body">
-        Companies House<br/>
-        PO Box 710<br/>
-        Crown Way<br/>
-        CF14 3UZ
-      </p>
-      <h4 class="govuk-heading-s">Scotland</h3>
-      <p class="govuk-body">
-        Companies House<br/>
-        Fourth Floor<br/>
-        Edinburgh Quay 2<br/>
-        139 Fountainbridge<br/>
-        Edinburgh<br/>
-        EH3 9FF
-      </p>
-      <h4 class="govuk-heading-s">Northern Ireland</h3>
-      <p class="govuk-body">
-        Companies House<br/>
-        2nd Floor<br/>
-        The Linenhall<br/>
-        32-38 Linenhall Street<br/>
-        Belfast<br/>
-        BT2 8BG<br/>
-      </p>
+        is already late filing their
+        {{scenario.company.reason}}. The company must now
+        <a href="https://www.gov.uk/running-a-limited-company">file its overdue
+          {{scenario.company.reason}}</a>.</p>
+      <p>A company cannot apply for extra time to file if the filing deadline has already passed.</p>
+      <p>We will send a letter to the directors of the company soon to warn them that the company could be prosecuted if the accounts are not filed.</p>
+      {% if scenario.company.reason !== 'confirmation statement' %}
+        <p>The company will receive an automatic
+          <a href="https://www.gov.uk/annual-accounts/penalties-for-late-filing">late filing penalty</a>
+          as soon as the accounts are filed and accepted because they are already late. The penalty will increase over time until the accounts are filed and applies to all companies, no matter what size or type of business. If the company’s accounts are filed
+          late in consecutive years, the penalty will double for that year’s accounts.</p>
+      {% else %}
+      {% endif %}
 
       <p class="govuk-body">
         <a href="https://www.gov.uk/service-manual/user-centred-design/resources/patterns/feedback-pages.html" class="govuk-link">What did you think of this service?</a>
