@@ -21,7 +21,9 @@
         <a href="https://www.gov.uk/running-a-limited-company">file its overdue
           {{scenario.company.reason}}</a>.</p>
       <p>A company cannot apply for extra time to file if the filing deadline has already passed.</p>
-      <p>We will send a letter to the directors of the company soon to warn them that the company could be prosecuted if the accounts are not filed.</p>
+      <p>We will send a letter to the directors of the company soon to warn them that the company could be prosecuted if the
+        {{scenario.company.reason}}
+        are not filed.</p>
       {% if scenario.company.reason !== 'confirmation statement' %}
         <p>The company will receive an automatic
           <a href="https://www.gov.uk/annual-accounts/penalties-for-late-filing">late filing penalty</a>
