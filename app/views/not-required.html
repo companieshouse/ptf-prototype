@@ -22,17 +22,25 @@
       <h2 class="govuk-heading-m">What happens next</h2>
       <p>You should
         <a href="http://resources.companieshouse.gov.uk/close-a-company/index.html">close the company</a>
-        so that it is removed from the register. When you have closed the company, we will no longer pursue its overdue
-        {{ scenario.company.reason }}. </p>
-        <P>If you do not close the company and do not file its overdue
-          {{ scenario.company.reason }},
-           we may prosecute the company directors.</P>
-    </p>
+        so that it is removed from the register. When you have closed the company, we will no longer pursue the overdue
+        {{ scenario.company.reason }}.</p>
+      <p>If you do not close the company and do not file your overdue
+        {{ scenario.company.reason }}, we may prosecute the company directors.
+      </p>
 
-    <p class="govuk-body">
-      <a href="https://www.gov.uk/service-manual/user-centred-design/resources/patterns/feedback-pages.html" class="govuk-link">What did you think of this service?</a>
-      (takes 30 seconds)
-    </p>
+      {% if scenario.company.reason !== 'confirmation statement' %}
+        <p>
+          If
+          {{scenario.company.name}}
+          files its accounts, it will receive a
+          <a href="https://www.gov.uk/annual-accounts/penalties-for-late-filing">late filing penalty</a>
+          that increases over time until the company is closed.</p>
+      {% endif %}
+
+      <p class="govuk-body">
+        <a href="https://www.gov.uk/service-manual/user-centred-design/resources/patterns/feedback-pages.html" class="govuk-link">What did you think of this service?</a>
+        (takes 30 seconds)
+      </p>
+    </div>
   </div>
-</div>
 {% endblock %}

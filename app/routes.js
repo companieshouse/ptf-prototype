@@ -182,10 +182,15 @@ router.get('/check-company', function (req, res) {
   })
   router.post('/continue-trading', function (req, res) {
     var wantCompany = req.body.wantCompany
+    var scenario = req.session.scenario
 
     switch (wantCompany) {
       case 'yes':
-        res.redirect('/still-required')
+        if (scenario.company.prosecution === 'yes') {
+          res.redirect('/prosecution')
+        } else {
+          res.redirect('/still-required')
+        }
         break
       case 'no':
         res.redirect('/not-required')
@@ -213,6 +218,11 @@ router.get('/check-company', function (req, res) {
     res.render('not-required', {
       scenario: req.session.scenario,
       email: req.session.email
+    })
+  })
+  router.get('/prosecution', function (req, res) {
+    res.render('prosecution', {
+      scenario: req.session.scenario
     })
   })
 })

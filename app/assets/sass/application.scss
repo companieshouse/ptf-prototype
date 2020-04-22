@@ -147,3 +147,28 @@ $govuk-assets-path: '/govuk/assets/';
     top: -.3em;
   }
 }
+/// print function ///
+
+.print-content {
+  display: none;
+}
+
+@include govuk-media-query($media-type: print) {
+  .print-content {
+    display: block;
+  }
+
+  .hide-print-content {
+    display: none;
+  }
+
+  .govuk-link__print {
+    display: none;
+  }
+}
+@media print {
+  .no-print,
+  .no-print * {
+    display: none !important;
+  }
+}
