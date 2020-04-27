@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  {% if errorList.length > 0 %}
+    Error:
+  {% endif %}
+  Promise to file
+{% endblock %}
+
+{% block backLink %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "sign-in"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {% if errorList.length > 0 %}
+        {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errorList
+      }) }}
+      {% endif %}
+      <h1 class="govuk-heading-xl">You cannot use this service</h1>
+
+      <p>The accounts and confirmation statement for BAD NEWS LIMITED have been filed and are up to date.</p>
+      <p>If COMPANY NAME is not required, you should
+        <a href="http://resources.companieshouse.gov.uk/close-a-company/index.html">close the company</a>
+        so that it is removed from the register.
+
+      </div>
+    </div>
+  {% endblock %}
