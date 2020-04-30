@@ -9,10 +9,21 @@
 
 {% block content %}
 
+  {% set llpHTML %}
+  {% if scenario.company.companyType === 'Limited Liability Partnership' %}
+    designated members
+  {% else %}
+    directors
+  {% endif %}
+  {% endset %}
+
   {% set warningHTML %}
-  Failure to file confirmation statements or accounts is a criminal offence and the company director can be fined in criminal court. Information about the consequences of not filing can be
+  Failure to file confirmation statements or accounts is a criminal offence and the
+  {{ llpHTML }}
+  of the company can be fined in criminal court. Information about the consequences of not filing can be
   <a href="https://www.gov.uk/government/publications/late-filing-penalties/late-filing-penalties#late-filing-penalty-fees">found in our guidance</a>.
   {% endset %}
+
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
@@ -67,14 +78,14 @@
       <p>If
         {{ scenario.company.name }}
         has not filed by
-        {{ scenario.company.newDeadline }}, we may prosecute the company directors.</p>
+        {{ scenario.company.newDeadline }}, we may prosecute the{{ llpHTML }}
+        of the company.</p>
       <p>
         <a href="https://www.gov.uk/government/organisations/companies-house/about/access-and-opening#cdf-addrs">Contact us</a>
         if you need to give more information or you want to talk to someone about reasonable adjustments.</p>
       {{ govukWarningText({
-        text: "Not filing for a company is a criminal offence. The directors of the company risk prosecution and company assets may be seized. ",
-        iconFallbackText: "Warning"
-      }) }}
+        html: warningHTML,
+        iconFallbackText: "Warning" }) }}
       <p class="govuk-body no-print">
         <a href="https://www.gov.uk/service-manual/user-centred-design/resources/patterns/feedback-pages.html" class="govuk-link">What did you think of this service?</a>
         (takes 30 seconds)

@@ -14,18 +14,29 @@
           {{scenario.company.name}}
           is no longer required</h1>
       </div>
-
+      {% set llpHTML %}
+      {% if scenario.company.companyType === 'Limited Liability Partnership' %}
+        designated members.
+      {% else %}
+        directors.
+      {% endif %}
+      {% endset %}
       <!-- <p>Your filing due date for the {{scenario.company.reason}} was {% if scenario.company.reason === 'confirmation statement' %} {{scenario.company.csDue}} and is now overdue. {% else %} {{ scenario.company.accountsDue }} and is now overdue.
       {{scenario.company.reason | capitalize}} filed late are subject to <a href="https://www.gov.uk/annual-accounts/penalties-for-late-filing">a penalty</a>. The current penalty for {{ scenario.company.name }} is {{ scenario.company.currentPenalty }} and
       the penalty will increase over time. You should file as soon as possible. {% endif %} </p> -->
-
+      <p class="govuk-body-l">
+        We've sent a confirmation email to
+        <span class="govuk-body-l govuk-!-font-weight-bold">{{ email }}</span>
+        which contains your reference number.
+      </p>
       <h2 class="govuk-heading-m">What happens next</h2>
       <p>You should
         <a href="http://resources.companieshouse.gov.uk/close-a-company/index.html">close the company</a>
         so that it is removed from the register. When you have closed the company, we will no longer pursue the overdue
         {{ scenario.company.reason }}.</p>
       <p>If you do not close the company and do not file your overdue
-        {{ scenario.company.reason }}, we may prosecute the company directors.
+        {{ scenario.company.reason }}, we may prosecute the company
+        {{ llpHTML }}
       </p>
 
       {% if scenario.company.reason !== 'confirmation statement' %}
