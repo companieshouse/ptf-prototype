@@ -12,6 +12,14 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
+      {% set llpHTML %}
+      {% if scenario.company.companyType === 'Limited Liability Partnership' %}
+        designated member
+      {% else %}
+        company director
+      {% endif %}
+      {% endset %}
+
       <h1 class="govuk-heading-xl">You cannot use this service</h1>
 
       <p>The company
