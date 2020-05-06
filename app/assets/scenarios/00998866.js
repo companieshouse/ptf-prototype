@@ -1,7 +1,7 @@
 module.exports = {
   company: {
     name: 'ABCS LLP',
-    number: '00998877',
+    number: '00998866',
     authCode: '222222',
     status: 'Active',
     incorporationDate: '12 December 2008',
