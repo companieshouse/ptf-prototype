@@ -1,7 +1,7 @@
 module.exports = {
   company: {
     name: 'DIPPY DINOS LTD',
-    number: '00334455',
+    number: '00334456',
     authCode: '654321',
     status: 'Active',
     incorporationDate: '12 December 2008',

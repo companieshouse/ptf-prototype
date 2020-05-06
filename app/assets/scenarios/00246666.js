@@ -2,7 +2,7 @@ module.exports = {
   company: {
     name: 'TWO MAN BAND LTD',
     number: '00246666',
-    authCode: '00246666DEFSTATAA',
+    authCode: '222222',
     status: 'Active',
     incorporationDate: '12 December 2008',
     companyType: 'Private Limited Company',
