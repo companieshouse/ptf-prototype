@@ -28,6 +28,42 @@
       <p>The accounts and confirmation statement for BAD NEWS LIMITED have been filed and are up to date. This service is for companies with overdue filings.</p>
       <p>You do not need to let us know that the company is still required.</p>
 
+      {% set detailsText %}
+      <h2 class="govuk-heading-m">By email</h2>
+      <p class="govuk-body">enquiries@companieshouse.gov.uk</p>
+      <h2 class="govuk-heading-m">By post</h2>
+      <h3 class="govuk-heading-s">England and Wales</h3>
+      <p class="govuk-body">
+        Companies House<br/>
+        PO Box 710<br/>
+        Crown Way<br/>
+        CF14 3UZ
+      </p>
+      <h3 class="govuk-heading-s">Scotland</h3>
+      <p class="govuk-body">
+        Companies House<br/>
+        Fourth Floor<br/>
+        Edinburgh Quay 2<br/>
+        139 Fountainbridge<br/>
+        Edinburgh<br/>
+        EH3 9FF
+      </p>
+      <h3 class="govuk-heading-s">Northern Ireland</h3>
+      <p class="govuk-body">
+        Companies House<br/>
+        2nd Floor<br/>
+        The Linenhall<br/>
+        32-38 Linenhall Street<br/>
+        Belfast<br/>
+        BT2 8BG<br/>
+      </p>
+
+      {% endset %}
+
+      {{ govukDetails({
+        summaryText: "Contact us if you need to give more information or you want to talk to someone about reasonable adjustments.",
+        html: detailsText
+      }) }}
     </div>
   </div>
 {% endblock %}
