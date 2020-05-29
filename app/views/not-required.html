@@ -22,7 +22,7 @@
       {% if scenario.company.companyType === 'Limited Liability Partnership' %}
         designated members.
       {% else %}
-        directors.
+        company directors.
       {% endif %}
       {% endset %}
       <!-- <p>Your filing due date for the {{scenario.company.reason}} was {% if scenario.company.reason === 'confirmation statement' %} {{scenario.company.csDue}} and is now overdue. {% else %} {{ scenario.company.accountsDue }} and is now overdue.
@@ -39,7 +39,7 @@
         so that it is removed from the register. When you have closed the company, we will no longer pursue the overdue
         {{ scenario.company.reason }}.</p>
       <p>If you do not close the company and do not file your overdue
-        {{ scenario.company.reason }}, we may prosecute the company
+        {{ scenario.company.reason }}, we may prosecute the
         {{ llpHTML }}
       </p>
 

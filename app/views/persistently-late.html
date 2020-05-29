@@ -12,32 +12,12 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      {% set llpHTML %}
-      {% if scenario.company.companyType === 'Limited Liability Partnership' %}
-        designated member
-      {% else %}
-        company director
-      {% endif %}
-      {% endset %}
-
       <h1 class="govuk-heading-xl">You cannot use this service</h1>
 
       <p>The company
         {{scenario.company.name}}
-        is already late filing their
-        {{scenario.company.reason}}. The company must now
-        <a href="https://www.gov.uk/running-a-limited-company">file its overdue
-          {{scenario.company.reason}}</a>.</p>
-      <p>The company directors will receive a letter, if they haven’t already, to warn them that the company could be prosecuted if the
-        {{scenario.company.reason}}
-        are not filed.</p>
-      {% if scenario.company.reason !== 'confirmation statement' %}
-        <p>The company will receive an automatic
-          <a href="https://www.gov.uk/annual-accounts/penalties-for-late-filing">late filing penalty</a>
-          as soon as the accounts are filed and accepted because they are already late. The penalty will increase over time until the accounts are filed and applies to all companies, no matter what size or type of business. If the company’s accounts are filed
-          late in consecutive years, the penalty will double for that year’s accounts.</p>
-      {% else %}
-      {% endif %}
+        has a history of late filing. You will need to contact us to tell us your company is still required.</p>
+
       {% set detailsText %}
       <h2 class="govuk-heading-m">By email</h2>
       <p class="govuk-body">enquiries@companieshouse.gov.uk</p>
@@ -71,9 +51,10 @@
       {% endset %}
 
       {{ govukDetails({
-        summaryText: "Contact us if you need to give more information or you want to talk to someone about reasonable adjustments.",
-        html: detailsText
-      }) }}
+          summaryText: "Contact us",
+          html: detailsText
+        }) }}
+
       <p class="govuk-body">
         <a href="https://www.gov.uk/service-manual/user-centred-design/resources/patterns/feedback-pages.html" class="govuk-link">What did you think of this service?</a>
         (takes 30 seconds)
