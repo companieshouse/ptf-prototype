@@ -7,6 +7,13 @@
   You cannot use this service
 {% endblock %}
 
+{% block backLink %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "continue-trading"
+  }) }}
+{% endblock %}
+
 {% block content %}
 
   <div class="govuk-grid-row">
@@ -20,17 +27,34 @@
       {% endif %}
       {% endset %}
 
+      {% set csOnlyHTML %}
+      {% if scenario.company.reason == 'Limited Liability Partnership' %}
+        designated member
+      {% else %}
+        company director
+      {% endif %}
+      {% endset %}
+
+      {% set grammarHTML %}
+      {% if scenario.company.reason === 'confirmation statement' %}
+        is
+      {% else %}
+        are
+      {% endif %}
+      {% endset %}
+
       <h1 class="govuk-heading-xl">You cannot use this service</h1>
 
-      <p>The company
-        {{scenario.company.name}}
-        is already late filing their
-        {{scenario.company.reason}}. The company must now
+      <p>Too much time has elapsed since the
+        {{scenario.company.reason}}
+        filing deadline for
+        {{scenario.company.name}}. The company must now
         <a href="https://www.gov.uk/running-a-limited-company">file its overdue
           {{scenario.company.reason}}</a>.</p>
       <p>The company directors will receive a letter, if they haven’t already, to warn them that the company could be prosecuted if the
         {{scenario.company.reason}}
-        are not filed.</p>
+        {{ grammarHTML }}
+        not filed.</p>
       {% if scenario.company.reason !== 'confirmation statement' %}
         <p>The company will receive an automatic
           <a href="https://www.gov.uk/annual-accounts/penalties-for-late-filing">late filing penalty</a>
@@ -38,42 +62,9 @@
           late in consecutive years, the penalty will double for that year’s accounts.</p>
       {% else %}
       {% endif %}
-      {% set detailsText %}
-      <h2 class="govuk-heading-m">By email</h2>
-      <p class="govuk-body">enquiries@companieshouse.gov.uk</p>
-      <h2 class="govuk-heading-m">By post</h2>
-      <h3 class="govuk-heading-s">England and Wales</h3>
-      <p class="govuk-body">
-        Companies House<br/>
-        PO Box 710<br/>
-        Crown Way<br/>
-        CF14 3UZ
-      </p>
-      <h3 class="govuk-heading-s">Scotland</h3>
-      <p class="govuk-body">
-        Companies House<br/>
-        Fourth Floor<br/>
-        Edinburgh Quay 2<br/>
-        139 Fountainbridge<br/>
-        Edinburgh<br/>
-        EH3 9FF
-      </p>
-      <h3 class="govuk-heading-s">Northern Ireland</h3>
-      <p class="govuk-body">
-        Companies House<br/>
-        2nd Floor<br/>
-        The Linenhall<br/>
-        32-38 Linenhall Street<br/>
-        Belfast<br/>
-        BT2 8BG<br/>
-      </p>
-
-      {% endset %}
-
-      {{ govukDetails({
-        summaryText: "Contact us if you need to give more information or you want to talk to someone about reasonable adjustments.",
-        html: detailsText
-      }) }}
+      <p>
+        <a href="https://www.gov.uk/government/organisations/companies-house/about/access-and-opening#cdf-addrs">Contact us</a>
+        if you need to give us information about exceptional circumstances that could mean you need reasonable adjustments.</p>
       <p class="govuk-body">
         <a href="https://www.gov.uk/service-manual/user-centred-design/resources/patterns/feedback-pages.html" class="govuk-link">What did you think of this service?</a>
         (takes 30 seconds)
