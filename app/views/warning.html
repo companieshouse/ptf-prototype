@@ -14,9 +14,9 @@
 {% block content %}
   {% set llpHTML %}
   {% if scenario.company.companyType === 'Limited Liability Partnership' %}
-    designated members
+    designated members.
   {% else %}
-    company director
+    company director.
   {% endif %}
   {% endset %}
   <div class="govuk-grid-row">
@@ -35,7 +35,7 @@
               </li>
             </ul>
             <p class="govuk-body-l">If you tell us a company is still required and do not file, we may prosecute the
-              {{ llpHTML }}.</p>
+              {{llpHTML}}</p>
 
             {{ govukButton({
           text: "Continue",
