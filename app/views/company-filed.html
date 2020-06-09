@@ -26,44 +26,18 @@
       <h1 class="govuk-heading-xl">You cannot use this service</h1>
 
       <p>The accounts and confirmation statement for BAD NEWS LIMITED have been filed and are up to date. This service is for companies with overdue filings.</p>
-      <p>You do not need to let us know that the company is still required.</p>
-
-      {% set detailsText %}
-      <h2 class="govuk-heading-m">By email</h2>
-      <p class="govuk-body">enquiries@companieshouse.gov.uk</p>
-      <h2 class="govuk-heading-m">By post</h2>
-      <h3 class="govuk-heading-s">England and Wales</h3>
-      <p class="govuk-body">
-        Companies House<br/>
-        PO Box 710<br/>
-        Crown Way<br/>
-        CF14 3UZ
-      </p>
-      <h3 class="govuk-heading-s">Scotland</h3>
-      <p class="govuk-body">
-        Companies House<br/>
-        Fourth Floor<br/>
-        Edinburgh Quay 2<br/>
-        139 Fountainbridge<br/>
-        Edinburgh<br/>
-        EH3 9FF
-      </p>
-      <h3 class="govuk-heading-s">Northern Ireland</h3>
-      <p class="govuk-body">
-        Companies House<br/>
-        2nd Floor<br/>
-        The Linenhall<br/>
-        32-38 Linenhall Street<br/>
-        Belfast<br/>
-        BT2 8BG<br/>
-      </p>
-
-      {% endset %}
-
-      {{ govukDetails({
-        summaryText: "Contact us if you need to give more information or you want to talk to someone about reasonable adjustments.",
-        html: detailsText
-      }) }}
+      <p>If you're unable to meet your filing deadline, you can
+        <a href="https://beta.companieshouse.gov.uk/extensions">apply for an extension</a>.</p>
+      <p>If BAD NEWS LIMITED is not required, you should
+        <a href="https://www.gov.uk/topic/company-registration-filing/closing-company">close the company</a>
+        so that it is removed from the register.
+        <p>
+          <a href="https://www.gov.uk/government/organisations/companies-house/about/access-and-opening#cdf-addrs">Contact us</a>
+          if you need to give us information about exceptional circumstances that could mean you need reasonable adjustments.</p>
+        <p class="govuk-body no-print">
+          <a href="https://www.gov.uk/service-manual/user-centred-design/resources/patterns/feedback-pages.html" class="govuk-link">What did you think of this service?</a>
+          (takes 30 seconds)
+        </p>
+      </div>
     </div>
-  </div>
-{% endblock %}
+  {% endblock %}
