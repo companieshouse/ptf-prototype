@@ -20,8 +20,8 @@
   {% set warningHTML %}
   Failure to file confirmation statements or accounts is a criminal offence and the
   {{ llpHTML }}
-  of the company can be fined in criminal court. Information about the consequences of not filing can be
-  <a href="https://www.gov.uk/government/publications/late-filing-penalties/late-filing-penalties#late-filing-penalty-fees">found in our guidance</a>.
+  of the company can be fined in criminal court.
+  <a href="https://www.gov.uk/government/publications/late-filing-penalties/late-filing-penalties#late-filing-penalty-fees">Read the guidance for information about the consequences of not filing</a>.
   {% endset %}
 
   <div class="govuk-grid-row">
@@ -48,8 +48,7 @@
       {% if scenario.company.PTFRequested !== 'yes' %}
         <p class="govuk-body-l">
           We've sent a confirmation email to
-          <span class="govuk-body-l govuk-!-font-weight-bold">{{ email }}</span>
-          which contains your reference number.
+          <span class="govuk-body-l govuk-!-font-weight-bold">{{ email }}</span>.
         </p>
       {% else %}
         <p class="govuk-body-l">
@@ -69,28 +68,30 @@
         will be kept on the register. This means we will no longer close the company, but it must file its
         {{ scenario.company.reason }}
         to stay on the register.</p>
-      {% if scenario.company.reason !== 'confirmation statement' %}
-        <p>The company will receive a
-          <a href="https://www.gov.uk/annual-accounts/penalties-for-late-filing">late filing penalty</a>
-          as soon as the accounts are filed and accepted because they are already late. The penalty will increase over time until the accounts are filed and applies to all companies, no matter what size or type of business. If the company's accounts are filed
-          late in consecutive years, the penalty will double for that year's accounts. The original filing deadline has not been changed or extended.</p>
-      {% endif %}
       <p>If
         {{ scenario.company.name }}
         has not filed by
         {{ scenario.company.newDeadline }}, we may prosecute the{{ llpHTML }}
-        of the company.</p>
+        of the company. The original filing deadline has not been changed or extended.</p>
       <p>
-        <a href="https://www.gov.uk/government/organisations/companies-house/about/access-and-opening#cdf-addrs">Contact us</a>
-        if you need to give more information or you want to talk to someone about reasonable adjustments.</p>
-      {{ govukWarningText({
+        {% if scenario.company.reason !== 'confirmation statement' %}
+          <p>The company will receive a
+            <a href="https://www.gov.uk/annual-accounts/penalties-for-late-filing">late filing penalty</a>
+            as soon as the accounts are filed and accepted because they are already late. The penalty will increase over time until the accounts are filed and applies to all companies, no matter what size or type of business. If the company's accounts are filed
+            late in consecutive years, the penalty will double for that year's accounts.</p>
+        {% endif %}
+
+        <p>
+          <a href="https://www.gov.uk/government/organisations/companies-house/about/access-and-opening#cdf-addrs">Contact us</a>
+          if you need to give us information about exceptional circumstances that could mean you need reasonable adjustments.</p>
+        {{ govukWarningText({
         html: warningHTML,
         iconFallbackText: "Warning" }) }}
-      <p class="govuk-body no-print">
-        <a href="https://www.gov.uk/service-manual/user-centred-design/resources/patterns/feedback-pages.html" class="govuk-link">What did you think of this service?</a>
-        (takes 30 seconds)
-      </p>
+        <p class="govuk-body no-print">
+          <a href="https://www.gov.uk/service-manual/user-centred-design/resources/patterns/feedback-pages.html" class="govuk-link">What did you think of this service?</a>
+          (takes 30 seconds)
+        </p>
+      </div>
     </div>
-  </div>
 
-{% endblock %}
+  {% endblock %}
