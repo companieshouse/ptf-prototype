@@ -32,6 +32,19 @@
       still required?
       {% endset %}
 
+      {% set warningHTML %}
+      <p class="govuk-body-l">By telling us that
+        {{scenario.company.name}}
+        is still required you are confirming that you:</p>
+      <ul class="govuk-list--bullet">
+        <li class="govuk-body-l">understand your filing obligations
+        </li>
+        <li class="govuk-body-l">intend to file for the company
+        </li>
+      </ul>
+      <p class="govuk-body-l">If you tell us a company is still required and do not file, we may prosecute the company directors.</p>
+{% endset %}
+
       <form action="" method="post">
         {{ govukRadios({
               classes: "govuk-radios--inline",
@@ -44,6 +57,9 @@
                   isPageHeading: true,
                   classes: 'govuk-fieldset__legend--xl'
                 }
+              },
+              hint: {
+                html: warningHTML
               },
               items: [
               {

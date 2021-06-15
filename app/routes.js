@@ -143,7 +143,7 @@ router.get('/authenticate', function (req, res) {
     scenario: req.session.scenario
   })
   router.post('/authenticate', function (req, res) {
-    res.redirect('warning')
+    res.redirect('continue-trading')
   })
 })
 router.get('/warning', function (req, res) {
