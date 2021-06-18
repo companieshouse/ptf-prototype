@@ -123,9 +123,10 @@
 
       {% if scenario.company.PTFRequested !== 'yes' %}
         {{ govukButton({
-text: "Confirm",
+text: "Confirm and continue",
 href: "authenticate"
 }) }}
+<p class="govuk-body"> <a href="company-number" class="govuk-link">Choose a different company</a></p>
 
       {% else %}
         {{ govukButton({

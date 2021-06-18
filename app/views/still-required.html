@@ -21,18 +21,19 @@
   Failure to file confirmation statements or accounts is a criminal offence and the
   {{ llpHTML }}
   of the company can be fined in criminal court.
-  <a href="https://www.gov.uk/government/publications/late-filing-penalties/late-filing-penalties#late-filing-penalty-fees">Read the guidance for information about the consequences of not filing</a>.
+
   {% endset %}
+
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
       <div class="govuk-panel govuk-panel--confirmation">
-        <h1 class="govuk-panel__title">You've told us
+        <h1 class="govuk-panel__title">You've confirmed
           {{scenario.company.name}}
           is still required</h1>
         <div class="govuk-panel__body">
-          Your reference number is the company number<br>
+          Your reference number is the company number:<br>
           <strong>{{ scenario.company.number }}</strong>
         </div>
       </div>
@@ -46,9 +47,9 @@
       {% endset %}
 
       {% if scenario.company.PTFRequested !== 'yes' %}
-        <p class="govuk-body-l">
+        <p class="govuk-body-m">
           We've sent a confirmation email to
-          <span class="govuk-body-l govuk-!-font-weight-bold">{{ email }}</span>.
+          <span class="govuk-body-m govuk-!-font-weight-bold">{{ email }}</span>.
         </p>
       {% else %}
         <p class="govuk-body-l">
@@ -59,20 +60,17 @@
           which contains your reference number.
         </p>
       {% endif %}
-      <p class="govuk-body hide-print-content print-link no-print" style="display: block;" aria-hidden="true" hidden="hidden">
-        <a href="javascript:if(window.print)window.print()" class="govuk-link">View printer-friendly version</a>
-      </p>
+
 
       <h2 class="govuk-heading-m">What happens next</h2>
       <p>{{ scenario.company.name }}
-        will be kept on the register. This means we will no longer close the company, but it must file its
-        {{ scenario.company.reason }}
+        will be kept on the register. This means we will no longer close the company, but it <strong>must file its
+        {{ scenario.company.reason }}</strong>
         to stay on the register.</p>
-      <p>If
-        {{ scenario.company.name }}
-        has not filed by
-        {{ scenario.company.newDeadline }}, we may prosecute the{{ llpHTML }}
+          <h3 class="govuk-heading-s">Filing deadline</h3>
+      <p>{{ scenario.company.name }} must file its accounts by {{ scenario.company.newDeadline }} at the latest. If the company has not filed its accounts by this date, we may prosecute the{{ llpHTML }}
         of the company. The original filing deadline has not been changed or extended.</p>
+          <h3 class="govuk-heading-s">Late filing penalties</h3>
       <p>
         {% if scenario.company.reason !== 'confirmation statement' %}
           <p>The company will receive a
@@ -81,12 +79,19 @@
             late in consecutive years, the penalty will double for that year's accounts.</p>
         {% endif %}
 
-        <p>
-          <a href="https://www.gov.uk/government/organisations/companies-house/about/access-and-opening#cdf-addrs">Contact us</a>
-          if you need to give us information about exceptional circumstances that could mean you need reasonable adjustments.</p>
+
         {{ govukWarningText({
         html: warningHTML,
         iconFallbackText: "Warning" }) }}
+        <p class="govuk-body hide-print-content print-link no-print" style="display: block;" aria-hidden="true" hidden="hidden">
+  
+<p class="govuk-body govuk-!-font-weight-regular">Read the   <a href="https://www.gov.uk/government/publications/late-filing-penalties/late-filing-penalties#late-filing-penalty-fees" class="govuk-link">guidance about the consequences of not filing</a>.</p>
+<p>
+  <a href="https://www.gov.uk/government/organisations/companies-house/about/access-and-opening#cdf-addrs">Contact us</a>
+  if you need to give us information about exceptional circumstances that could mean you need reasonable adjustments.</p>
+        <p>  <a href="javascript:if(window.print)window.print()" class="govuk-link">View printer friendly version of this page</a>
+            <h3 class="govuk-heading-s">Feedback</h3>
+        </p>
         <p class="govuk-body no-print">
           <a href="https://www.gov.uk/service-manual/user-centred-design/resources/patterns/feedback-pages.html" class="govuk-link">What did you think of this service?</a>
           (takes 30 seconds)

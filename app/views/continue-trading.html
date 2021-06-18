@@ -4,9 +4,9 @@
   {% if errorList.length > 0 %}
     Error:
   {% endif %}
-  Tell us if
+  Select if
   {{scenario.company.name}}
-  is required
+  is still required and you intend to file
 {% endblock %}
 
 {% block backLink %}
@@ -27,22 +27,27 @@
       {% endif %}
 
       {% set titleHTML %}
-      Is
+      Tell us if
       {{scenario.company.name}}
-      still required?
+      is still required and you intend to file
       {% endset %}
 
       {% set warningHTML %}
-      <p>By telling us that
+      <br>
+      <p>If you tell us that
         {{scenario.company.name}}
-        is still required you are confirming that you:</p>
+        is still required, you are confirming that you:</p>
       <ul class="govuk-list--bullet">
         <li class="govuk-body-m">understand your filing obligations
         </li>
-        <li class="govuk-body-m">intend to file for the company
+        <li class="govuk-body-m">intend to file your overdue accounts or confirmation statement
         </li>
       </ul>
-      <p>If you tell us a company is still required and do not file, we may prosecute the company directors.</p>
+      {{ govukInsetText({
+  text: "If you tell us a company is still required and do not file, we may prosecute the company directors."
+}) }}
+
+      <h3 class="govuk-heading-s">Is {{scenario.company.name}} still required, and do you intend to file for this company?</h3>
 {% endset %}
 
       <form action="" method="post">
@@ -61,6 +66,7 @@
               hint: {
                 html: warningHTML
               },
+
               items: [
               {
                 value: "yes",
@@ -73,7 +79,7 @@
           })
         }}
         {{ govukButton({
-            text: "Continue"
+            text: "Confirm"
           }) }}
       </form>
     </div>
