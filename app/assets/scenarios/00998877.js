@@ -7,13 +7,13 @@ module.exports = {
     incorporationDate: '12 December 2008',
     companyType: 'Private Limited Company',
     address: '25 Bones Lane\nCardiff\nCF13 2WW',
-    accountsDue: '13 May 2020',
+    accountsDue: '13 June 2021',
     accountsStatus: 'overdue',
-    csDue: '15 July 2020',
+    csDue: '15 July 2021',
     csStatus: 'notDue',
     reason: 'accounts',
     PTFRequested: 'no',
     currentPenalty: '£150',
-    newDeadline: '7 June 2020'
+    newDeadline: '29 July 2021'
   }
 }
