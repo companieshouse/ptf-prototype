@@ -20,18 +20,17 @@
     <div class="govuk-grid-column-two-thirds">
       {% if errorList.length > 0 %}
         {{ govukErrorSummary({
-          titleText: "There was a problem with your authentication",
+          titleText: "Enter the company authentication code",
           errorList: errorList
         }) }}
       {% endif %}
       <h1 class="govuk-heading-xl">Enter the company authentication code</h1>
-      <p class="govuk-body">You need the authentication code to submit company information for
-        {{ scenario.company.name }}.</p>
+      <p class="govuk-body">This is a 6 character code issued by us to each company. You need the code to submit information online for {{ scenario.company.name }}.</p>
       <form action="" method="post">
         {% if authCodeErr.flag %}
           {{ govukInput({
             label: {
-              text: "Company authentication code"
+              text: "Authentication code"
             },
             errorMessage: {
               text: authCodeErr.text,
@@ -46,7 +45,7 @@
         {% else %}
           {{ govukInput({
             label: {
-              text: "Company authentication code"
+              text: "Authentication code"
             },
             id: "auth-code",
             name: "authCode",
@@ -65,16 +64,11 @@
           {{ govukButton({
           text: "Continue"
         }) }}
-        {{ govukDetails({
-          summaryText: "Help with authentication code",
-          html: 'This is a 6 character code issued by us to each company. The code is used to authorise online filings.</p>        <p class="govuk-body">
-                    <a href="https://ewf.companieshouse.gov.uk/?_ga=2.259791299.813501771.1566987875-1638653194.1563432911" class="govuk-link" target="_blank">Request an authentication code</a>
-                  </p>'
-        }) }}
+
         {% endif %}
 
       </form>
     </div>
   </div>
-
+    <p>  <a href="https://www.gov.uk/guidance/company-authentication-codes-for-online-filing" class="govuk-link" target="_blank">How to request an authentication code (opens in a new tab)</a><p></p>
 {% endblock %}

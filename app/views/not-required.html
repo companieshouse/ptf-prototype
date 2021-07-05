@@ -10,13 +10,10 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <div class="govuk-panel govuk-panel--confirmation">
-        <h1 class="govuk-panel__title">You've confirmed
+        <h1 class="govuk-panel__title">You've told us
           {{scenario.company.name}}
           is no longer required</h1>
-        <div class="govuk-panel__body">
-          Your reference number is the company number:<br>
-          <strong>{{ scenario.company.number }}</strong>
-        </div>
+        
       </div>
       {% set llpHTML %}
       {% if scenario.company.companyType === 'Limited Liability Partnership' %}

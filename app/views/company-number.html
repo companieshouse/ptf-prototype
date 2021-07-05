@@ -20,7 +20,7 @@
     <div class="govuk-grid-column-two-thirds">
       {% if referenceErr or companyErr %}
         {{ govukErrorSummary({
-      titleText: "We couldn't find your reference details",
+      titleText: "Enter the company number",
       errorList: errorList,
       text: companyErr.text,
       text: referenceErr.text
@@ -46,7 +46,7 @@
                   text: "Company number"
                 },
                 hint: {
-                  text: "This is the 8 character reference issued by Companies House when the company was set up."
+                  text: ""
                 },
                 errorMessage: {
                   text: companyErr.text

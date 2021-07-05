@@ -68,7 +68,8 @@
         {{ scenario.company.reason }}</strong>
         to stay on the register.</p>
           <h3 class="govuk-heading-s">Filing deadline</h3>
-      <p>{{ scenario.company.name }} must file its accounts by {{ scenario.company.newDeadline }} at the latest. If the company has not filed its accounts by this date, we may prosecute the{{ llpHTML }}
+      <p>{{ scenario.company.name }} must file its accounts by<strong>
+      {{ scenario.company.newDeadline }}</strong> at the latest. If the company has not filed its accounts by this date, we may prosecute the{{ llpHTML }}
         of the company. The original filing deadline has not been changed or extended.</p>
           <h3 class="govuk-heading-s">Late filing penalties</h3>
       <p>
@@ -84,7 +85,7 @@
         html: warningHTML,
         iconFallbackText: "Warning" }) }}
         <p class="govuk-body hide-print-content print-link no-print" style="display: block;" aria-hidden="true" hidden="hidden">
-  
+
 <p class="govuk-body govuk-!-font-weight-regular">Read the   <a href="https://www.gov.uk/government/publications/late-filing-penalties/late-filing-penalties#late-filing-penalty-fees" class="govuk-link">guidance about the consequences of not filing</a>.</p>
 <p>
   <a href="https://www.gov.uk/government/organisations/companies-house/about/access-and-opening#cdf-addrs">Contact us</a>

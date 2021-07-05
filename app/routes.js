@@ -25,13 +25,13 @@ router.post('/company-number', function (req, res) {
 
   if (companyNumber.length < 8) {
     companyErr.type = 'invalid'
-    companyErr.text = 'You must enter your full eight character company number'
+    companyErr.text = 'Enter the company number'
     companyErr.flag = true
     errorFlag = true
   }
   if (companyNumber === '') {
     companyErr.type = 'invalid'
-    companyErr.text = 'You must enter your full eight character company number'
+    companyErr.text = 'Enter the company number'
     companyErr.flag = true
     errorFlag = true
   }
